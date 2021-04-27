@@ -1,0 +1,10 @@
+﻿[
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2015],"output":false},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1970],"output":false},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1996],"output":true},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1960],"output":true},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2100],"output":false},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1900],"output":false},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2000],"output":true},
+    {"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2400],"output":true}
+]
