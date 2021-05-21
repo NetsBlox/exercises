@@ -1,0 +1,14 @@
+{
+  "name": "build-library",
+  "version": "1.0.0",
+  "description": "Build a block library to facilitate the use of these exercises for use in NetsBlox",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash.template": "^4.5.0"
+  }
+}
