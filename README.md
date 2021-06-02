@@ -9,3 +9,16 @@ Feel free to browse the [exercises](./exercises) and open the starter template (
 If you want to compose these exercises into autograded (and automatically loaded!) activities, simply import the "AutograderTools.xml" file into [NetsBlox](https://editor.netsblox.org/) and then use the Autograders service to create your own lesson/set of assignments! An example can be found below:
 
 ![Creating an autograded lesson with the exercises!](./example.png)
+
+## Contributing
+After cloning the repository, configure the githooks with:
+```
+git config core.hooksPath .githooks
+```
+This will ensure that any automated preparation will happen automatically such as updating the autograder tools library.
+
+Next, create a new directory in `exercises/`. This should contain the following files:
+- name.txt: The display name for the activity
+- template.xml: The starter template for the project
+- tests.json: The test cases to use when grading the activity
+- credits.txt [optional]: Any attributions to sources of inspiration, etc, for the activity
