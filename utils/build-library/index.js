@@ -9,6 +9,17 @@ const exercises = fs.readdirSync(EXERCISES_PATH)
     .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')))
     .map(dirname => [fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim(), dirname]);
 
-//fs.writeFileSync(path.join(EXERCISES_PATH, '..', 'AutograderTools.xml'), makeLibrary({exercises}));
-//console.log('Updated the autograder tools!');
-console.log(makeLibrary({exercises}));
+const isHook = !!process.argv.find(opt => opt === '--hook');
+const toolsPath = path.join(EXERCISES_PATH, '..', 'AutograderTools.xml');
+if (isHook) {
+    const newToolsTxt = makeLibrary({exercises}).trim();
+    const oldToolsTxt = fs.existsSync(toolsPath) ? fs.readFileSync(toolsPath, 'utf8').trim() : '';
+    if (newToolsTxt !== oldToolsTxt) {
+        fs.writeFileSync(toolsPath, newToolsTxt);
+        console.log('Updated the autograder tools! Please confirm the changes and recommit.');
+        process.exit(1);
+    }
+} else {
+    fs.writeFileSync(toolsPath, makeLibrary({exercises}));
+    console.log('Updated the autograder tools!');
+}
