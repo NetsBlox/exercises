@@ -9,5 +9,6 @@ const exercises = fs.readdirSync(EXERCISES_PATH)
     .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')))
     .map(dirname => [fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim(), dirname]);
 
-fs.writeFileSync(path.join(EXERCISES_PATH, '..', 'AutograderTools.xml'), makeLibrary({exercises}));
-console.log('Updated the autograder tools!');
+//fs.writeFileSync(path.join(EXERCISES_PATH, '..', 'AutograderTools.xml'), makeLibrary({exercises}));
+//console.log('Updated the autograder tools!');
+console.log(makeLibrary({exercises}));
