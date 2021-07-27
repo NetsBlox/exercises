@@ -1,10 +1,12 @@
 const path = require('path');
 const assert = require('assert');
 const fs = require('fs');
-const EXERCISES_PATH = path.join(__dirname, '..', '..', 'exercises');
+const ROOT_PATH = path.join(__dirname, '..', '..');
+const EXERCISES_PATH = path.join(ROOT_PATH, 'exercises');
 const TPL_PATH = path.join(__dirname, 'template.xml.ejs');
 const tpl = require('lodash.template');
 const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
+const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
 const XML_Element = require('./lib/snap/xml');
 
 const isHook = !!process.argv.find(opt => opt === '--hook');
@@ -15,6 +17,7 @@ function sum(a, b) {
 const updatedCount = [
     prepareExercises(),
     updateLibrary(),
+    updateReadme(),
 ].reduce(sum, 0);
 
 if (isHook && updatedCount > 0) {
@@ -143,6 +146,32 @@ function updateLibrary() {
     const toolsXML = makeLibrary({exercises, parsons}).trim();
 
     return updateFile(toolsPath, toolsXML, 'Updated the autograder tools!');
+}
+
+function updateReadme() {
+    const exerciseNames = fs.readdirSync(EXERCISES_PATH);
+    const exercises = exerciseNames.map(dirname => {
+        const name = fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim();
+        const template = getOpenInEditorLink(dirname, 'template.xml');
+        const parsons = getOpenInEditorLink(dirname, 'parsons.xml');
+        return {name, template, parsons};
+    });
+    const readmePath = path.join(ROOT_PATH, 'README.md');
+    const contents = makeReadme({exercises}).trim();
+
+    return updateFile(readmePath, contents, 'Updated README');
+}
+
+function getOpenInEditorLink(dirname, filepath) {
+    const fullpath = path.join(EXERCISES_PATH, dirname, filepath)
+
+    if (fs.existsSync(fullpath)) {
+        const relpath = path.relative(ROOT_PATH, fullpath);
+        const xmlUrl = `https://raw.githubusercontent.com/NetsBlox/exercises/master/${relpath}`;
+        const url = `https://editor.netsblox.org#open:${xmlUrl}`;
+        return url;
+    }
+    return null;
 }
 
 function updateFile(path, newContents, msg) {
