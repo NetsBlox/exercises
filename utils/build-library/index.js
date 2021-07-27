@@ -129,10 +129,11 @@ function getParsonsName(filepath) {
 }
 
 function updateLibrary() {
-    const exercises = fs.readdirSync(EXERCISES_PATH)
-        .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')))
+    const testedExercises = fs.readdirSync(EXERCISES_PATH)
+        .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')));
+    const exercises = testedExercises
         .map(dirname => [fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim(), dirname]);
-    const parsons = fs.readdirSync(EXERCISES_PATH)
+    const parsons = testedExercises
         .flatMap(dirname => fs.readdirSync(path.join(EXERCISES_PATH, dirname))
             .map(d => path.join(EXERCISES_PATH, dirname, d))
             .filter(filepath => filepath.endsWith('.xml') && !filepath.endsWith('template.xml'))
