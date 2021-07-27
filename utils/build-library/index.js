@@ -13,8 +13,7 @@ function sum(a, b) {
     return a + b;
 }
 const updatedCount = [
-    cleanExercises(),
-    //createEmptyTemplates(),
+    prepareExercises(),
     updateLibrary(),
 ].reduce(sum, 0);
 
@@ -23,33 +22,38 @@ if (isHook && updatedCount > 0) {
     process.exit(1);
 }
 
-/*
- * Ensure each exercise has a template.xml file in which the custom
- * block has all contents removed
- */
-function createEmptyTemplates() {
-    const parsonsFiles = getParsonsFiles();
-    return parsonsFiles.map(createEmptyTemplate).reduce(sum, 0);
+function prepareExercises() {
+    const exercises = fs.readdirSync(EXERCISES_PATH);
+    // TODO: Clean this next fn up
+    return exercises.reduce((changed, exercise) => {
+        const tpls = getStarterTemplates(exercise);
+        for (const tpl of tpls) {
+            const [name, contents] = tpl;
+            changed += updateFile(name, contents, `Updated ${exercise} (${name})`);
+        }
+        return changed;
+    }, 0);
 }
 
-function getParsonsFiles() {
-    const getParsonsFile = dirname => {
-        const filenames = fs.readdirSync(path.join(EXERCISES_PATH, dirname));
-        const parsonsVariants = filenames
-            .filter(name => name.startsWith('parsons') && name.endsWith('.xml'))
-            .sort((a, b) => a.length < b.length ? -1 : 1)
+function* getStarterTemplates(dirname) {
+    const filenames = fs.readdirSync(path.join(EXERCISES_PATH, dirname));
+    const namePath = path.join(EXERCISES_PATH, dirname, 'name.txt');
+    const name = fs.readFileSync(namePath, 'utf8').trim();
 
-        if (parsonsVariants.length) {
-            const filename = parsonsVariants.shift();
-            return path.join(EXERCISES_PATH, dirname, filename);
-        }
-    };
+    const xmlFiles = filenames.filter(name => name.endsWith('.xml'))
+        .map(xmlFile => path.join(EXERCISES_PATH, dirname, xmlFile));
 
-    const parsonsFiles = fs.readdirSync(EXERCISES_PATH)
-        .map(name => getParsonsFile(name))
-        .filter(filename => filename);
+    assert(xmlFiles.length, `No templates found for ${dirname}`);
+    for (const filepath of xmlFiles) {
+        const xml = fs.readFileSync(filepath, 'utf8').trim();
+        const updatedXml = setProjectName(scrubHistory(xml), name);
+        yield [filepath, updatedXml];
+    }
 
-    return parsonsFiles;
+    const hasBlankTemplateXML = !!xmlFiles.find(filepath => filepath.endsWith('template.xml'));
+    if (!hasBlankTemplateXML) {
+        yield createEmptyTemplate(xmlFiles[0]);
+    }
 }
 
 function getTestedBlocks(dirname) {
@@ -89,34 +93,14 @@ function createEmptyTemplate(parsonsFile) {
 
     testedBlocks.forEach(blockDef => {
         const scripts = blockDef.childNamed('scripts');
-        scripts.children.forEach(block => scripts.removeChild(block));
+        scripts.children = [];
     });
 
     const templateFile = path.join(dirname, 'template.xml');
-    return updateFile(
+    return [
         templateFile,
         element.toString().trim(),
-        `Created blank template for ${path.basename(dirname)}`
-    );
-}
-
-function cleanExercises() {
-    const requiredFiles = name => [
-        path.join(EXERCISES_PATH, name, 'name.txt'),
-        path.join(EXERCISES_PATH, name, 'template.xml')
     ];
-    const exerciseFiles = fs.readdirSync(EXERCISES_PATH)
-        .map(name => requiredFiles(name))
-        .filter(files => files.every(n => fs.existsSync(n)));
-
-    const updates = exerciseFiles.map(filepaths => {
-        const [, xmlPath] = filepaths;
-        const [name, xml] = filepaths.map(f => fs.readFileSync(f, 'utf8').trim());
-        const updatedXml = setProjectName(scrubHistory(xml), name);
-        return updateFile(xmlPath, updatedXml, `Updated ${name} exercise template.`);
-    });
-
-    return updates.reduce((s, n) => s + n, 0);
 }
 
 function setProjectName(xml, name) {
@@ -143,9 +127,8 @@ function updateLibrary() {
 function updateFile(path, newContents, msg) {
     const contents = () => fs.readFileSync(path, 'utf8').trim();
     let updated = false;
+    const c = contents();
     if (!fs.existsSync(path) || newContents !== contents()) {
-        console.log(`>${newContents}<`);
-        console.log(`>${contents()}<`);
         fs.writeFileSync(path, newContents);
         console.log(msg);
         updated = true;
