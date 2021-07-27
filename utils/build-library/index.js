@@ -120,7 +120,7 @@ function getParsonsName(filepath) {
     const name = fs.readFileSync(namePath, 'utf8').trim();
     const chunks = path.basename(filepath).split('-');
     if (chunks.length > 1) {
-        chunks.pop();
+        chunks.shift();
         chunks[chunks.length - 1] = chunks[chunks.length - 1].replace('.xml', '');
         const suffix = chunks.join(' ');
         return `${name} (${suffix})`;
