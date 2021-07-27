@@ -29,7 +29,8 @@ function prepareExercises() {
         const tpls = getStarterTemplates(exercise);
         for (const tpl of tpls) {
             const [name, contents] = tpl;
-            changed += updateFile(name, contents, `Updated ${exercise} (${name})`);
+            const relpath = path.relative(EXERCISES_PATH, name);
+            changed += updateFile(name, contents, `Updated ${exercise} (${relpath})`);
         }
         return changed;
     }, 0);
@@ -127,7 +128,6 @@ function updateLibrary() {
 function updateFile(path, newContents, msg) {
     const contents = () => fs.readFileSync(path, 'utf8').trim();
     let updated = false;
-    const c = contents();
     if (!fs.existsSync(path) || newContents !== contents()) {
         fs.writeFileSync(path, newContents);
         console.log(msg);
