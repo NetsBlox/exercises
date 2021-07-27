@@ -115,12 +115,31 @@ function scrubHistory(xml) {
         .replace(/<replay>.*?<\/replay>/g, '<replay></replay>');
 }
 
+function getParsonsName(filepath) {
+    const namePath = path.join(path.dirname(filepath), 'name.txt');
+    const name = fs.readFileSync(namePath, 'utf8').trim();
+    const chunks = path.basename(filepath).split('-');
+    if (chunks.length > 1) {
+        chunks.pop();
+        chunks[chunks.length - 1] = chunks[chunks.length - 1].replace('.xml', '');
+        const suffix = chunks.join(' ');
+        return `${name} (${suffix})`;
+    }
+    return name;
+}
+
 function updateLibrary() {
     const exercises = fs.readdirSync(EXERCISES_PATH)
         .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')))
         .map(dirname => [fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim(), dirname]);
+    const parsons = fs.readdirSync(EXERCISES_PATH)
+        .flatMap(dirname => fs.readdirSync(path.join(EXERCISES_PATH, dirname))
+            .map(d => path.join(EXERCISES_PATH, dirname, d))
+            .filter(filepath => filepath.endsWith('.xml') && !filepath.endsWith('template.xml'))
+            .map(filepath => [getParsonsName(filepath), path.relative(EXERCISES_PATH, filepath)])
+        )
     const toolsPath = path.join(EXERCISES_PATH, '..', 'AutograderTools.xml');
-    const toolsXML = makeLibrary({exercises}).trim();
+    const toolsXML = makeLibrary({exercises, parsons}).trim();
 
     return updateFile(toolsPath, toolsXML, 'Updated the autograder tools!');
 }
