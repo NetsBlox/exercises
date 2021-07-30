@@ -1,0 +1,1 @@
+Tests have been renamed to disable the use of this exercise until the following issue has been fixed: https://github.com/NetsBlox/NetsBlox/issues/3226
