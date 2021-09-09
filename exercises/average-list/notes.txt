@@ -1,0 +1,1 @@
+This is similar to the average exercise except that one uses variadic inputs whereas this uses an input list.
