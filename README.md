@@ -37,8 +37,32 @@ git config core.hooksPath .githooks
 ```
 This will ensure that any automated preparation will happen automatically such as updating the autograder tools library.
 
-Next, create a new directory in `exercises/`. This should contain the following files:
+### Creating the exercise
+Next, create the starter template with NetsBlox. Ideally, it includes the following sections:
+- The custom block by itself at the top of the scripting area
+- A few examples using the block with the expected output
+- An advanced example that will work once the custom block is implemented
+
+See the "Moving Average" or "Counting Letter Frequency" exercises for a couple examples.
+
+After implementing the custom block and completing the template, scramble (disconnecting all the blocks) the implementation of the custom block so it is a Parsons problem. Then save it as
+```
+exercises/<exercise-name>/parsons.xml
+```
+
+The empty version of the exercise will be created automatically via one of the githooks.
+
+### Adding the tests
+Next, we need to add the automated tests for the exercise. The tests are defined using the (JSON) specification found in the Autograders service. Since multidimensional lists can be easily exported as JSON, we can define the tests in the environment using the custom blocks from the "Autograder helpers" community library. Here is an example for the "Actor's Birthday" exercise:
+
+![Setting the "tests" variable to a list of test cases](./tests.png)
+
+After setting the variable to these tests, we can right click the watcher and select "export" to download them as JSON. Simply copy this file to `exercises/<exercise-name>/tests.json` and the tests will be added!
+
+### Final touches
+Finally, we can add some of the last remaining metadata. Most importantly, we need to add a `name.txt` file with the assignment name. An overview of the files for the exercise can be found below.
 - name.txt: The display name for the activity
-- template.xml: The starter template for the project
+- parsons.xml: The activity as a Parsons problem. Used to generate the empty version.
+- template.xml: The starter template for the project (Generated automatically from the parsons.xml file)
 - tests.json: The test cases to use when grading the activity
 - credits.txt [optional]: Any attributions to sources of inspiration, etc, for the activity
