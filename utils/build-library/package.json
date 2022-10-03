@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lodash.template": "^4.5.0"
+    "lodash.template": "^4.5.0",
+    "toml": "^3.0.0"
   }
 }
