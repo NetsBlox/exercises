@@ -1,5 +1,6 @@
 const path = require('path');
 const assert = require('assert');
+const toml = require('toml');
 const fs = require('fs');
 const ROOT_PATH = path.join(__dirname, '..', '..');
 const EXERCISES_PATH = path.join(ROOT_PATH, 'exercises');
@@ -40,9 +41,9 @@ function prepareExercises() {
 }
 
 function* getStarterTemplates(dirname) {
-    const filenames = fs.readdirSync(path.join(EXERCISES_PATH, dirname));
-    const namePath = path.join(EXERCISES_PATH, dirname, 'name.txt');
-    const name = fs.readFileSync(namePath, 'utf8').trim();
+    const exerciseDir = path.join(EXERCISES_PATH, dirname);
+    const filenames = fs.readdirSync(exerciseDir);
+    const metadata = getMetadata(exerciseDir);
 
     const xmlFiles = filenames.filter(name => name.endsWith('.xml'))
         .map(xmlFile => path.join(EXERCISES_PATH, dirname, xmlFile));
@@ -50,7 +51,7 @@ function* getStarterTemplates(dirname) {
     assert(xmlFiles.length, `No templates found for ${dirname}`);
     for (const filepath of xmlFiles) {
         const xml = fs.readFileSync(filepath, 'utf8').trim();
-        const updatedXml = setProjectName(scrubHistory(xml), name);
+        const updatedXml = setProjectName(scrubHistory(xml), metadata.name);
         yield [filepath, updatedXml];
     }
 
@@ -119,23 +120,30 @@ function scrubHistory(xml) {
 }
 
 function getParsonsName(filepath) {
-    const namePath = path.join(path.dirname(filepath), 'name.txt');
-    const name = fs.readFileSync(namePath, 'utf8').trim();
+    const metadata = getMetadata(path.dirname(filepath));
     const chunks = path.basename(filepath).split('-');
     if (chunks.length > 1) {
         chunks.shift();
         chunks[chunks.length - 1] = chunks[chunks.length - 1].replace('.xml', '');
         const suffix = chunks.join(' ');
-        return `${name} (${suffix})`;
+        return `${metadata.name} (${suffix})`;
     }
-    return name;
+    return metadata.name;
+}
+
+function getMetadata(exerciseDir) {
+    const metadataPath = path.join(exerciseDir, 'metadata.toml');
+    const text = fs.readFileSync(metadataPath, 'utf8').trim();
+    const metadata = toml.parse(text);
+    assert(metadata.name, `Missing "name" field in ${metadataPath}`);
+    return metadata;
 }
 
 function updateLibrary() {
     const testedExercises = fs.readdirSync(EXERCISES_PATH)
         .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')));
     const exercises = testedExercises
-        .map(dirname => [fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim(), dirname]);
+        .map(dirname => [getMetadata(path.join(EXERCISES_PATH, dirname)).name, dirname]);
     const parsons = testedExercises
         .flatMap(dirname => fs.readdirSync(path.join(EXERCISES_PATH, dirname))
             .map(d => path.join(EXERCISES_PATH, dirname, d))
@@ -151,7 +159,7 @@ function updateLibrary() {
 function updateReadme() {
     const exerciseNames = fs.readdirSync(EXERCISES_PATH);
     const exercises = exerciseNames.map(dirname => {
-        const name = fs.readFileSync(path.join(EXERCISES_PATH, dirname, 'name.txt'), 'utf8').trim();
+        const name = getMetadata(path.join(EXERCISES_PATH, dirname)).name;
         const template = getOpenInEditorLink(dirname, 'template.xml');
         const parsons = getOpenInEditorLink(dirname, 'parsons.xml');
         return {name, template, parsons};
