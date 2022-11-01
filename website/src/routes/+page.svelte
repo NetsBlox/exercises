@@ -1,16 +1,150 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>NetsBlox Exercises</h1>
+<p>For more information about NetsBlox, check out <a href="https://netsblox.org">https://netsblox.org</a>!</p>
+
 <TextField label="Search..." bind:value={searchQuery}>
 </TextField>
+<List
+	twoLine
+	>
+	{#each exercises as exercise}
+	<Item
+		>
+		<Text>
+			<PrimaryText>{exercise.name}
+			</PrimaryText>
+			<SecondaryText>{exercise.description}</SecondaryText>
+		</Text>
+		<Set chips={exercise.concepts} let:chip nonInteractive>
+			<Chip {chip}>
+				<ChipText>{chip}</ChipText>
+			</Chip>
+		</Set>
+	</Item>
+	{/each}
+</List>
 
 <script lang="ts">
 	import TextField from '@smui/textfield';
-	let searchQuery: string = '';
+	import List, {Item, PrimaryText, SecondaryText, Text} from '@smui/list';
+	import Chip, {Set, Text as ChipText} from '@smui/chips';
 
-	$: console.log(searchQuery);
+	let searchQuery: string = '';
+	let allExercises = getDemoExercises();
+	let exercises = allExercises;
+	interface Exercise {
+		name: string;
+		description: string;
+		concepts: string[];
+	}
+
+	function range(num: number): number[] {
+		return [... new Array(num)].map((_, i) => i);
+	}
+
+	function sample<T>(options: T[]): T {
+		const index = Math.floor(Math.random()*options.length);
+		return options[index];
+	}
+
+	function choose<T>(options: T[], count: number): T[] {
+		return range(count).map(_ => sample(options));
+	}
+
+	function uniq<T>(list: T[]): T[] {
+		return list.reduce((newList: T[], item: T) => {
+			if (!newList.includes(item)) {
+				newList.push(item);
+			}
+			return newList;
+		}, []);
+	}
+
+	$: showResults(searchQuery);
+
+	function showResults(queryString: string) {
+		const query = Query.parse(queryString);
+		exercises = allExercises.filter(exercise => query.match(exercise));
+	}
+
+	class Query {
+		constructor(rules) {
+		}
+
+		match(exercise: Exercise): boolean {
+		}
+
+		static parse(query: string): Query {
+			const chunks = query.split(/\s/);
+			const rules = [];
+
+			for (let i = 0; i < chunks.length; i++) {
+				let chunk = chunks[i];
+				const Rule = QueryRules.find(Rule => chunk.startsWith(Rule.prefix));
+				if (chunk === Rule.prefix && i < chunks.length - 1) {
+					chunk += chunks[i+1];
+					i++;
+				}
+				const rule = Rule.parse(chunk);
+				rules.push(rule);
+			}
+			return new Query(rules);
+		}
+	}
+
+	const QueryRules = [
+		NegatedRule,
+		TextRule,
+	];
+
+	interface QueryRule {
+		match: (exercise: Exercise) => boolean;
+		prefix: string;
+	}
+
+	class NegatedRule implements QueryRule {
+		rule: QueryRule;
+
+		constructor(rule: QueryRule) {
+			this.rule = rule;
+		}
+
+		match(exercise: Exercise): boolean {
+			return !this.rule.match(exercise);
+		}
+
+		static parse(query: string): NegatedRule {
+			return new NegatedRule(Query.parse(query.substring(1)));
+		}
+	}
+	NegatedRule.prefix = '-';
+
+	class TextRule implements QueryRule {
+		words: string[];
+
+		constructor(text: string) {
+			this.words = text.split().map(word => word.toLowerCase());
+		}
+
+		match(exercise: Exercise): boolean {
+			const name = exercise.name.toLowerCase();
+			const description = exercise.description.toLowerCase();
+			return !!this.words.find(word => name.includes(word) || description.includes(word));
+		}
+	}
+	TextRule.prefix = '';
+
 	// TODO: fetch the list of exercises?
 	// TODO: show them in a list
 	// TODO: add badges for each item in the list
 	// TODO: add semi-clever search/filtering capabilities
 	// TODO: button to open in NetsBlox (w/ autograding?)
+	function getDemoExercises(): Exercise[] {
+		const allConcepts = ['lists', 'loops', 'variables', 'events', 'message passing'];
+		let exercises = range(10).map(i => ({
+			name: `Exercise ${i}`,
+			description: `desc ${i}`,
+			concepts: uniq(choose(allConcepts, sample(range(4)))),
+		}));
+		return exercises;
+	}
 </script>
