@@ -28,13 +28,15 @@
 	import List, {Item, PrimaryText, SecondaryText, Text} from '@smui/list';
 	import Chip, {Set, Text as ChipText} from '@smui/chips';
 
+	import allExercises from '../exercises.json';
 	let searchQuery: string = '';
-	let allExercises = getDemoExercises();
 	let exercises = allExercises;
+
 	interface Exercise {
 		name: string;
 		description: string;
 		concepts: string[];
+		// TODO: topics
 	}
 
 	function range(num: number): number[] {
@@ -62,7 +64,8 @@
 	$: showResults(searchQuery);
 
 	function showResults(queryString: string) {
-		const query = Query.parse(queryString);
+		// TODO: add text query parsing (using a parsing lib)
+		const query = TextRule.parse(queryString);
 		exercises = allExercises.filter(exercise => query.match(exercise));
 	}
 
@@ -91,18 +94,14 @@
 		}
 	}
 
-	const QueryRules = [
-		NegatedRule,
-		TextRule,
-	];
-
 	interface QueryRule {
 		match: (exercise: Exercise) => boolean;
 		prefix: string;
+		static parse: (text: string) => QueryRule;
 	}
 
 	class NegatedRule implements QueryRule {
-		rule: QueryRule;
+		//rule: QueryRule;
 
 		constructor(rule: QueryRule) {
 			this.rule = rule;
@@ -119,22 +118,30 @@
 	NegatedRule.prefix = '-';
 
 	class TextRule implements QueryRule {
-		words: string[];
+		//words: string[];
 
 		constructor(text: string) {
-			this.words = text.split().map(word => word.toLowerCase());
+			this.words = text.split().map(word => word.toLowerCase()).filter(w => w);
 		}
 
 		match(exercise: Exercise): boolean {
+			if (!this.words.length) return true;
 			const name = exercise.name.toLowerCase();
 			const description = exercise.description.toLowerCase();
 			return !!this.words.find(word => name.includes(word) || description.includes(word));
 		}
+
+		static parse(query: string): TextRule {
+			return new TextRule(query);
+		}
 	}
 	TextRule.prefix = '';
 
-	// TODO: fetch the list of exercises?
-	// TODO: show them in a list
+	const QueryRules = [
+		NegatedRule,
+		TextRule,
+	];
+
 	// TODO: add badges for each item in the list
 	// TODO: add semi-clever search/filtering capabilities
 	// TODO: button to open in NetsBlox (w/ autograding?)

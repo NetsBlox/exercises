@@ -1,3 +1,4 @@
+const {execSync} = require('child_process');
 const path = require('path');
 const assert = require('assert');
 const toml = require('toml');
@@ -19,6 +20,7 @@ const updatedCount = [
     prepareExercises(),
     updateLibrary(),
     updateReadme(),
+    updateWebsite(),
 ].reduce(sum, 0);
 
 if (isHook && updatedCount > 0) {
@@ -168,6 +170,29 @@ function updateReadme() {
     const contents = makeReadme({exercises}).trim();
 
     return updateFile(readmePath, contents, 'Updated README');
+}
+
+function updateWebsite() {
+    const exerciseNames = fs.readdirSync(EXERCISES_PATH);
+    const exercises = exerciseNames.map(dirname => {
+        const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
+        metadata.template = getOpenInEditorLink(dirname, 'template.xml');
+        metadata.parsons = getOpenInEditorLink(dirname, 'parsons.xml');
+        return metadata;
+    });
+
+    const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
+    const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');
+    if (updated) {
+        rebuildWebsite();
+    }
+    return updated;
+}
+
+function rebuildWebsite() {
+    const websitePath = path.join(ROOT_PATH, 'website');
+    const stdout = execSync('npm run build', {cwd: websitePath});
+    console.log(stdout.toString());
 }
 
 function getOpenInEditorLink(dirname, filepath) {
