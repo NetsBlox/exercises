@@ -116,59 +116,14 @@
 		exercises = allExercises.filter(exercise => query.match(exercise));
 	}
 
-	class Query {
-		constructor(rules) {
-		}
-
-		match(exercise: Exercise): boolean {
-		}
-
-		static parse(query: string): Query {
-			const chunks = query.split(/\s/);
-			const rules = [];
-
-			for (let i = 0; i < chunks.length; i++) {
-				let chunk = chunks[i];
-				const Rule = QueryRules.find(Rule => chunk.startsWith(Rule.prefix));
-				if (chunk === Rule.prefix && i < chunks.length - 1) {
-					chunk += chunks[i+1];
-					i++;
-				}
-				const rule = Rule.parse(chunk);
-				rules.push(rule);
-			}
-			return new Query(rules);
-		}
-	}
-
 	interface QueryRule {
 		match: (exercise: Exercise) => boolean;
-		prefix: string;
 		static parse: (text: string) => QueryRule;
 	}
 
-	class NegatedRule implements QueryRule {
-		//rule: QueryRule;
-
-		constructor(rule: QueryRule) {
-			this.rule = rule;
-		}
-
-		match(exercise: Exercise): boolean {
-			return !this.rule.match(exercise);
-		}
-
-		static parse(query: string): NegatedRule {
-			return new NegatedRule(Query.parse(query.substring(1)));
-		}
-	}
-	NegatedRule.prefix = '-';
-
 	class TextRule implements QueryRule {
-		//words: string[];
-
 		constructor(text: string) {
-			this.words = text.split().map(word => word.toLowerCase()).filter(w => w);
+			this.words = text.split(/\s+/).map(word => word.toLowerCase()).filter(w => w);
 		}
 
 		match(exercise: Exercise): boolean {
@@ -184,13 +139,6 @@
 			return new TextRule(query);
 		}
 	}
-	TextRule.prefix = '';
 
-	const QueryRules = [
-		NegatedRule,
-		TextRule,
-	];
-
-	// TODO: add badges for each item in the list
 	// TODO: add semi-clever search/filtering capabilities
 </script>
