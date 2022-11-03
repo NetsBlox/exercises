@@ -138,7 +138,12 @@ function getMetadata(exerciseDir) {
     const text = fs.readFileSync(metadataPath, 'utf8').trim();
     const metadata = toml.parse(text);
     assert(metadata.name, `Missing "name" field in ${metadataPath}`);
-    return metadata;
+    const defaults = {
+        description: '',
+        concepts: []
+    };
+
+    return Object.assign({}, defaults, metadata);
 }
 
 function updateLibrary() {
