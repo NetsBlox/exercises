@@ -132,7 +132,7 @@
 				.concat(exercise.topics || [])
 				.concat([exercise.name, exercise.description])
 				.join(' ').toLowerCase();
-			return !!this.words.find(word => textToSearch.includes(word));
+			return !!this.words.every(word => textToSearch.includes(word));
 		}
 
 		static parse(query: string): TextRule {
