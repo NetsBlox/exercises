@@ -2,7 +2,7 @@
 - [ ] add styles
 	- [x] add top app bar
 	- [x] set the color to match netsblox
-	- [ ] use cards instead of a list?
+	- [x] use cards instead of a list?
 		- or make it 2 column
 	- [ ] add logo to the top left
 - [ ] build an autograder from the website?
