@@ -6,6 +6,7 @@ const fs = require('fs');
 const ROOT_PATH = path.join(__dirname, '..', '..');
 const EXERCISES_PATH = path.join(ROOT_PATH, 'exercises');
 const TPL_PATH = path.join(__dirname, 'template.xml.ejs');
+const EDITOR_URL = 'https://editor.netsblox.org';
 const tpl = require('lodash.template');
 const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
 const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
@@ -181,8 +182,8 @@ function updateWebsite() {
     const exerciseNames = fs.readdirSync(EXERCISES_PATH);
     const exercises = exerciseNames.map(dirname => {
         const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
-        metadata.template = getOpenInEditorLink(dirname, 'template.xml');
-        metadata.parsons = getOpenInEditorLink(dirname, 'parsons.xml');
+        metadata.template = getSourceUrl(dirname, 'template.xml');
+        metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
         return metadata;
     });
 
@@ -200,13 +201,23 @@ function rebuildWebsite() {
     console.log(stdout.toString());
 }
 
+function getSourceUrl(dirname, filepath) {
+    const fullpath = path.join(EXERCISES_PATH, dirname, filepath)
+
+    if (fs.existsSync(fullpath)) {
+        const relpath = path.relative(ROOT_PATH, fullpath);
+        return `https://raw.githubusercontent.com/NetsBlox/exercises/master/${relpath}`;
+    }
+    return null;
+}
+
 function getOpenInEditorLink(dirname, filepath) {
     const fullpath = path.join(EXERCISES_PATH, dirname, filepath)
 
     if (fs.existsSync(fullpath)) {
         const relpath = path.relative(ROOT_PATH, fullpath);
-        const xmlUrl = `https://raw.githubusercontent.com/NetsBlox/exercises/master/${relpath}`;
-        const url = `https://editor.netsblox.org#open:${xmlUrl}`;
+        const xmlUrl = getSourceUrl(dirname, filepath);
+        const url = `${EDITOR_URL}#open:${xmlUrl}`;
         return url;
     }
     return null;

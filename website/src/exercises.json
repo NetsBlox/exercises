@@ -1,99 +1,135 @@
 [
   {
+    "description": "",
+    "concepts": [],
     "name": "Actor's Birthday",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Anagram",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
     "parsons": null
   },
   {
-    "name": "Atbash Cipher",
     "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East.",
     "concepts": [],
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml"
+    "name": "Atbash Cipher",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Compute the Average",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Compute the Average of a List",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml"
   },
   {
+    "description": "Create a function to check if a given number is between two other numbers!",
+    "concepts": [],
     "name": "Between",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Caesar Shift",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Cracking the Caesar Shift with Brute Force",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Cracking the Caesar Shift with a Partial Solution",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Cyclic Iterator",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Fizz-Buzz",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/template.xml",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/template.xml",
     "parsons": null
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Intro to Infinite Sequences",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Leap Year",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
     "parsons": null
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Counting Letter Frequency",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Counting Letter Frequency as Dictionary",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
     "parsons": null
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Mapping Over Infinite Sequences",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Moving Average",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml"
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "Sliding Windows",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
     "parsons": null
   },
   {
+    "description": "",
+    "concepts": [],
     "name": "From Infinite Sequences to Finite Lists",
-    "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
-    "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"
   }
 ]

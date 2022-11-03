@@ -15,9 +15,13 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
+		"@smui/button": "^7.0.0-beta.0",
 		"@smui/chips": "^6.1.4",
+		"@smui/icon-button": "^7.0.0-beta.0",
+		"@smui/layout-grid": "^7.0.0-beta.0",
 		"@smui/list": "^6.1.4",
 		"@smui/textfield": "^6.1.4",
+		"@smui/top-app-bar": "^7.0.0-beta.0",
 		"@sveltejs/adapter-auto": "^1.0.0-next.80",
 		"@sveltejs/adapter-static": "^1.0.0-next.43",
 		"@sveltejs/kit": "^1.0.0-next.505",
