@@ -69,6 +69,7 @@ import allExercises from '../exercises.json';
 let searchQuery: string = '';
 let mounted = false;
 let exercises = allExercises;
+export const prerender = true;
 
 onMount(() => {
 	console.log('initializing searchQuery to', $page.url.searchParams.get('q'));
