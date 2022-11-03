@@ -9,6 +9,7 @@
 - [ ] add descriptions
 - [ ] add concepts
 - [ ] build an autograder from the website?
+- [ ] what images should be shown? any?
 
 ## Done
 - [x] Update the exercises to use toml?

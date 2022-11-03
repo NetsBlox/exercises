@@ -11,6 +11,8 @@
   },
   {
     "name": "Atbash Cipher",
+    "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East.",
+    "concepts": [],
     "template": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
     "parsons": "https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml"
   },
