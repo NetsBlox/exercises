@@ -54,7 +54,7 @@
 		name: string;
 		description: string;
 		concepts: string[];
-		// TODO: topics
+		topics: string[];
 	}
 
 	function range(num: number): number[] {
@@ -89,7 +89,6 @@
 	function download(text: string, filename: string) {
 		const anchor = document.createElement("a");
 		anchor.setAttribute("download", filename);
-		console.log('downloading', text);
 		anchor.setAttribute("href", `data:text/plain;base64,${btoa(text)}`);
 		anchor.click();
 	}
@@ -174,9 +173,11 @@
 
 		match(exercise: Exercise): boolean {
 			if (!this.words.length) return true;
-			const name = exercise.name.toLowerCase();
-			const description = exercise.description.toLowerCase();
-			return !!this.words.find(word => name.includes(word) || description.includes(word));
+			const textToSearch = exercise.concepts
+				.concat(exercise.topics || [])
+				.concat([exercise.name, exercise.description])
+				.join(' ').toLowerCase();
+			return !!this.words.find(word => textToSearch.includes(word));
 		}
 
 		static parse(query: string): TextRule {
@@ -192,14 +193,4 @@
 
 	// TODO: add badges for each item in the list
 	// TODO: add semi-clever search/filtering capabilities
-	// TODO: button to open in NetsBlox (w/ autograding?)
-	function getDemoExercises(): Exercise[] {
-		const allConcepts = ['lists', 'loops', 'variables', 'events', 'message passing'];
-		let exercises = range(10).map(i => ({
-			name: `Exercise ${i}`,
-			description: `desc ${i}`,
-			concepts: uniq(choose(allConcepts, sample(range(4)))),
-		}));
-		return exercises;
-	}
 </script>

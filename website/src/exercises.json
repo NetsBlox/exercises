@@ -46,7 +46,7 @@
     "concepts": [],
     "name": "Caesar Shift",
     "topics": [
-      "Cryptography"
+      "cryptography"
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml"
@@ -56,7 +56,7 @@
     "concepts": [],
     "name": "Cracking the Caesar Shift with Brute Force",
     "topics": [
-      "Cryptography"
+      "cryptography"
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/parsons.xml"
@@ -66,7 +66,7 @@
     "concepts": [],
     "name": "Cracking the Caesar Shift with a Partial Solution",
     "topics": [
-      "Cryptography"
+      "cryptography"
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/parsons.xml"

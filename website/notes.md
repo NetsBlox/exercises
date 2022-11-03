@@ -1,15 +1,12 @@
 # To Do
 - [ ] add styles
-	- [ ] add top app bar
-	- [ ] set the color to match netsblox
+	- [x] add top app bar
+	- [x] set the color to match netsblox
 	- [ ] use cards instead of a list?
-- [ ] click to open (maybe use cards?)
-	- [ ] open btn
-	- [ ] download btn
-- [ ] add descriptions
-- [ ] add concepts
+		- or make it 2 column
+	- [ ] add logo to the top left
 - [ ] build an autograder from the website?
-- [ ] what images should be shown? any?
+- [-] what images should be shown? any?
 
 ## Done
 - [x] Update the exercises to use toml?
@@ -18,3 +15,8 @@
 	- frontend could download the metadata file and search over that
 - [x] add actual exercises
 	- generate JSON for all exercises
+- [x] click to open (maybe use cards?)
+	- [x] open btn
+	- [x] download btn
+- [x] add descriptions
+- [x] add concepts
