@@ -1,12 +1,4 @@
 # To Do
-- [ ] add styles
-	- [x] add top app bar
-	- [x] set the color to match netsblox
-	- [x] use cards instead of a list?
-		- or make it 2 column
-	- [ ] add logo to the top left
-	- [ ] center the search bar
-	- [ ] expand on the description
 - [ ] build an autograder from the website?
 - [-] what images should be shown? any?
 
@@ -22,3 +14,12 @@
 	- [x] download btn
 - [x] add descriptions
 - [x] add concepts
+- [x] add styles
+	- [x] add top app bar
+	- [x] set the color to match netsblox
+	- [x] use cards instead of a list?
+		- or make it 2 column
+	- [x] center the search bar
+	- [x] add logo to the top left
+	- [x] expand on the description
+- [x] sync the search query with query string?
