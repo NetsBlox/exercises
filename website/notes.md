@@ -5,6 +5,8 @@
 	- [x] use cards instead of a list?
 		- or make it 2 column
 	- [ ] add logo to the top left
+	- [ ] center the search bar
+	- [ ] expand on the description
 - [ ] build an autograder from the website?
 - [-] what images should be shown? any?
 
