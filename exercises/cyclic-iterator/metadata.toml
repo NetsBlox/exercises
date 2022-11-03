@@ -1,1 +1,3 @@
 name = "Cyclic Iterator"
+description = "Create an iterator over items in a list that restarts when it reaches the end"
+concepts = ["higher-order functions"]

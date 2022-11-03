@@ -1,1 +1,3 @@
 name = "From Infinite Sequences to Finite Lists"
+description = "Convert infinite sequences back to lists using 'take' and 'collect'"
+concepts = ["higher-order functions"]

@@ -1,1 +1,3 @@
 name = "Mapping Over Infinite Sequences"
+description = "Implement map over an infinite sequence (from 'Intro to Infinite Sequences')"
+concepts = ["higher-order functions"]

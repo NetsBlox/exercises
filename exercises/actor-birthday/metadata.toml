@@ -1,1 +1,2 @@
 name = "Actor's Birthday"
+description = "Implement a function to get the birthday of an actor using the MovieDB service"

@@ -1,1 +1,2 @@
 name = "Compute the Average"
+description = "Given a variable list of input numbers (expandable slot), compute the average"

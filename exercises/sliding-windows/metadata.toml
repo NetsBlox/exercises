@@ -1,1 +1,3 @@
 name = "Sliding Windows"
+description = "Given a list and window size, return a list of all windows of the given size from the list."
+concepts = ["loops"]

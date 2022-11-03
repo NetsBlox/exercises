@@ -1,13 +1,13 @@
 [
   {
-    "description": "",
+    "description": "Implement a function to get the birthday of an actor using the MovieDB service",
     "concepts": [],
     "name": "Actor's Birthday",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Check if two words are anagrams of each other",
     "concepts": [],
     "name": "Anagram",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
@@ -21,14 +21,14 @@
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Given a variable list of input numbers (expandable slot), compute the average",
     "concepts": [],
     "name": "Compute the Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Given a list of numbers, compute the average",
     "concepts": [],
     "name": "Compute the Average of a List",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
@@ -42,92 +42,121 @@
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Implement the caesar cipher, a famous classical encryption technique used by Julius Caesar",
     "concepts": [],
     "name": "Caesar Shift",
+    "topics": [
+      "Cryptography"
+    ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Crack a message encrypted with the Caesar cipher using brute force.",
     "concepts": [],
     "name": "Cracking the Caesar Shift with Brute Force",
+    "topics": [
+      "Cryptography"
+    ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Given a single decrypted letter, crack the Caesar cipher!",
     "concepts": [],
     "name": "Cracking the Caesar Shift with a Partial Solution",
+    "topics": [
+      "Cryptography"
+    ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/parsons.xml"
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Create an iterator over items in a list that restarts when it reaches the end",
+    "concepts": [
+      "higher-order functions"
+    ],
     "name": "Cyclic Iterator",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/parsons.xml"
   },
   {
-    "description": "",
-    "concepts": [],
-    "name": "Fizz-Buzz",
+    "description": "Implement the FizzBuzz interview question",
+    "concepts": [
+      "conditionals"
+    ],
+    "name": "FizzBuzz",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/template.xml",
     "parsons": null
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Represent a counter over all the counting numbers using higher-order functions",
+    "concepts": [
+      "higher-order functions"
+    ],
     "name": "Intro to Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Given a year, determine if it is a leap year",
     "concepts": [],
     "name": "Leap Year",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
     "parsons": null
   },
   {
-    "description": "",
+    "description": "Count the letters in a large text and return the counts as a list",
     "concepts": [],
     "name": "Counting Letter Frequency",
+    "topics": [
+      "Cryptography"
+    ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml"
   },
   {
-    "description": "",
+    "description": "Count the letters in a large text and return them as a table (recording counts by letter).",
     "concepts": [],
     "name": "Counting Letter Frequency as Dictionary",
+    "topics": [
+      "Cryptography"
+    ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
     "parsons": null
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Implement map over an infinite sequence (from 'Intro to Infinite Sequences')",
+    "concepts": [
+      "higher-order functions"
+    ],
     "name": "Mapping Over Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/parsons.xml"
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Return a list of the averages for every N consecutive numbers in a given list",
+    "concepts": [
+      "loops"
+    ],
     "name": "Moving Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml"
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Given a list and window size, return a list of all windows of the given size from the list.",
+    "concepts": [
+      "loops"
+    ],
     "name": "Sliding Windows",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
     "parsons": null
   },
   {
-    "description": "",
-    "concepts": [],
+    "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
+    "concepts": [
+      "higher-order functions"
+    ],
     "name": "From Infinite Sequences to Finite Lists",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"

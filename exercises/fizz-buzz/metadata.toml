@@ -1,1 +1,3 @@
-name = "Fizz-Buzz"
+name = "FizzBuzz"
+description = "Implement the FizzBuzz interview question"
+concepts = ["conditionals"]
