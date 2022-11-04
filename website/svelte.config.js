@@ -11,6 +11,7 @@ const config = {
 		adapter: adapter({
 			pages: '../docs'
 		}),
+		appDir: 'app_',
 	}
 };
 
