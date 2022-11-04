@@ -148,14 +148,17 @@ function showResults(queryString: string) {
 function setQueryString(searchQuery: string) {
     const newParams = new URLSearchParams();
 	newParams.set("q", searchQuery);
-	console.log('setting query string to', searchQuery);
 	const params = $page.url.searchParams;
-	[...newParams.entries()].forEach(([key, value]) => params.set(key, value));
-	goto(`?${params.toString()}`, {
-		replaceState: true,
-		noscroll: true,
-		keepfocus: true
-	});
+	const changed = params.toString() !== newParams.toString();
+
+	if (changed) {
+			[...newParams.entries()].forEach(([key, value]) => params.set(key, value));
+			goto(`?${params.toString()}`, {
+				replaceState: true,
+				noscroll: true,
+				keepfocus: true
+			});
+	}
 }
 
 interface QueryRule {
