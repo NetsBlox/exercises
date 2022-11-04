@@ -1,7 +1,7 @@
 <TopAppBar variant="static" dense={true}>
         <Row>
                 <Section>
-                        <img src="./full_logo.png" alt="NetsBlox" style="height: 75%">
+                        <img src="/exercises/full_logo.png" alt="NetsBlox" style="height: 75%">
                         <Title style="color: #9d9d9d; font-family: sans-serif; font-style: italic">Exercises</Title>
                 </Section>
         </Row>
