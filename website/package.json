@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build && touch ../docs/.nojekyll",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync && npm run smui-theme",
 		"smui-theme": "smui-theme compile static/smui.css -i src/theme",
