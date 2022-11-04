@@ -1,3 +1,3 @@
 name = "Cracking the Caesar Shift with a Partial Solution"
-description = "Given a single decrypted letter, crack the Caesar cipher!"
+description = "Given a single decrypted letter, crack the Caesar cipher"
 topics = ["cryptography"]
