@@ -1,0 +1,4 @@
+name = "Vigenere Cipher"
+description = "Implement the Vigenere cipher, an extension of the Caesar cipher"
+topics = ["cryptography"]
+concepts = ["loops", "lists"]

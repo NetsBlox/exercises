@@ -42,7 +42,7 @@
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml"
   },
   {
-    "description": "Implement the caesar cipher, a famous classical encryption technique used by Julius Caesar",
+    "description": "Implement the Caesar cipher, a famous classical encryption technique used by Julius Caesar",
     "concepts": [],
     "name": "Caesar Shift",
     "topics": [
@@ -160,5 +160,18 @@
     "name": "From Infinite Sequences to Finite Lists",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"
+  },
+  {
+    "description": "Implement the Vigenere cipher, an extension of the Caesar cipher",
+    "concepts": [
+      "loops",
+      "lists"
+    ],
+    "name": "Vigenere Cipher",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/parsons.xml"
   }
 ]
