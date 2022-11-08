@@ -185,7 +185,7 @@ function updateWebsite() {
         metadata.template = getSourceUrl(dirname, 'template.xml');
         metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
         return metadata;
-    });
+    }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
 
     const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
     const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');

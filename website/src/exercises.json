@@ -21,20 +21,6 @@
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml"
   },
   {
-    "description": "Given a variable list of input numbers (expandable slot), compute the average",
-    "concepts": [],
-    "name": "Compute the Average",
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml"
-  },
-  {
-    "description": "Given a list of numbers, compute the average",
-    "concepts": [],
-    "name": "Compute the Average of a List",
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml"
-  },
-  {
     "description": "Create a function to check if a given number is between two other numbers",
     "concepts": [],
     "name": "Between",
@@ -50,6 +36,40 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml"
+  },
+  {
+    "description": "Given a variable list of input numbers (expandable slot), compute the average",
+    "concepts": [],
+    "name": "Compute the Average",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml"
+  },
+  {
+    "description": "Given a list of numbers, compute the average",
+    "concepts": [],
+    "name": "Compute the Average of a List",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml"
+  },
+  {
+    "description": "Count the letters in a large text and return the counts as a list",
+    "concepts": [],
+    "name": "Counting Letter Frequency",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml"
+  },
+  {
+    "description": "Count the letters in a large text and return them as a table (recording counts by letter)",
+    "concepts": [],
+    "name": "Counting Letter Frequency as Dictionary",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
+    "parsons": null
   },
   {
     "description": "Crack a message encrypted with the Caesar cipher using brute force",
@@ -90,6 +110,15 @@
     "parsons": null
   },
   {
+    "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
+    "concepts": [
+      "higher-order functions"
+    ],
+    "name": "From Infinite Sequences to Finite Lists",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"
+  },
+  {
     "description": "Represent a counter over all the counting numbers using higher-order functions",
     "concepts": [
       "higher-order functions"
@@ -103,26 +132,6 @@
     "concepts": [],
     "name": "Leap Year",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
-    "parsons": null
-  },
-  {
-    "description": "Count the letters in a large text and return the counts as a list",
-    "concepts": [],
-    "name": "Counting Letter Frequency",
-    "topics": [
-      "cryptography"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml"
-  },
-  {
-    "description": "Count the letters in a large text and return them as a table (recording counts by letter)",
-    "concepts": [],
-    "name": "Counting Letter Frequency as Dictionary",
-    "topics": [
-      "cryptography"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
     "parsons": null
   },
   {
@@ -151,15 +160,6 @@
     "name": "Sliding Windows",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
     "parsons": null
-  },
-  {
-    "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
-    "concepts": [
-      "higher-order functions"
-    ],
-    "name": "From Infinite Sequences to Finite Lists",
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml"
   },
   {
     "description": "Implement the Vigenere cipher, an extension of the Caesar cipher",
