@@ -13,7 +13,9 @@ const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
 const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
 const makeAutograder = (() => {
     const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
-    return config => autograderTpl.replace('AUTOGRADER_CONFIG', JSON.stringify(config));
+    return (config, name) => autograderTpl
+        .replace('AUTOGRADER_CONFIG', JSON.stringify(config))
+        .replace('INITIAL_ASSIGNMENT', name);
 })();
 const XML_Element = require('./lib/snap/xml');
 
@@ -219,8 +221,9 @@ function getAutograderPath(dirname) {
 
 function updateAutograder(dirname) {
     const autograderPath = getAutograderPath(dirname);
-    const config = getAutograderConfig(dirname);
-    const autograder = makeAutograder(config);
+    const config = getAutograderConfig();
+    const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
+    const autograder = makeAutograder(config, metadata.name);
     return updateFile(
         autograderPath,
         autograder,
@@ -228,7 +231,16 @@ function updateAutograder(dirname) {
     );
 }
 
-function getAutograderConfig(dirname) {
+function getAutograderConfig() {
+    const exercises = fs.readdirSync(EXERCISES_PATH);
+    const assignments = exercises.map(getAssignmentConfig);
+    return {
+        name: 'NetsBlox Exercises',
+        assignments,
+    };
+}
+
+function getAssignmentConfig(dirname) {
     const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
     return {
         name: metadata.name,

@@ -4,7 +4,6 @@
 (function() {
     const config = AUTOGRADER_CONFIG;
     const [ide] = world.children;
-console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */
@@ -662,7 +661,19 @@ console.log('loaded autograder!', config.name);
     NetsBloxExtensions.register(CustomBlockAutograder);
 
     // Prompt to load the assignment right away
-    const autograder = new CustomBlockAutograder(world.children[0]);
-    autograder.loadAssignment(autograder.assignments[0]);
+    function checkLoaded() {
+        if (!NetsBloxExtensions.isLoaded(config.name)) {
+            console.log('not yet loaded!');
+            return setTimeout(checkLoaded, 100);
+        }
+
+        const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
+        const assignmentName = INITIAL_ASSIGNMENT;
+        const assignment = autograder.assignments.find(a => a.name === assignmentName);
+        if (assignment) {
+            autograder.loadAssignment(assignment);
+        }
+    }
+    checkLoaded();
 
 })();
