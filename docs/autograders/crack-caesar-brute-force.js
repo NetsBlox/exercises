@@ -668,7 +668,7 @@
         }
 
         const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
-        const assignmentName = Cracking the Caesar Shift with Brute Force;
+        const assignmentName = 'Cracking the Caesar Shift with Brute Force';
         const assignment = autograder.assignments.find(a => a.name === assignmentName);
         if (assignment) {
             autograder.loadAssignment(assignment);
