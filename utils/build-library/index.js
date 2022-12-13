@@ -189,7 +189,7 @@ function updateWebsite() {
         metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
         metadata.autograder = getSourceUrl(dirname, 'autograder.js');
         return metadata;
-    });
+    }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
 
     const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
     const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');
@@ -221,7 +221,6 @@ function getAutograderConfig(dirname) {
 
 function getTestsConfig(dirname) {
     const testsFile = path.join(EXERCISES_PATH, dirname, 'tests.json');
-    console.log('getting tests at', testsFile);
     if (fs.existsSync(testsFile)) {
         return require(testsFile);
     } else {

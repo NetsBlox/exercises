@@ -23,6 +23,7 @@ Feel free to browse the [exercises](./exercises) and open the starter template (
 - [Moving Average](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml), too!
 - [Sliding Windows](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml).
 - [From Infinite Sequences to Finite Lists](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml), too!
+- [Vigenere Cipher](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/parsons.xml), too!
 
 
 ### Build your own lesson!

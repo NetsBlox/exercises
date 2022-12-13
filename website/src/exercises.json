@@ -8,7 +8,7 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/autograder.js"
   },
   {
-    "description": "Check if two words are anagrams of each other",
+    "description": "Check if two words are anagrams",
     "concepts": [],
     "name": "Anagram",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
@@ -16,12 +16,31 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/autograder.js"
   },
   {
-    "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East.",
+    "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East",
     "concepts": [],
     "name": "Atbash Cipher",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml",
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/autograder.js"
+  },
+  {
+    "description": "Create a function to check if a given number is between two other numbers",
+    "concepts": [],
+    "name": "Between",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml",
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/autograder.js"
+  },
+  {
+    "description": "Implement the Caesar cipher, a famous classical encryption technique used by Julius Caesar",
+    "concepts": [],
+    "name": "Caesar Shift",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml",
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/autograder.js"
   },
   {
     "description": "Given a variable list of input numbers (expandable slot), compute the average",
@@ -40,26 +59,29 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/autograder.js"
   },
   {
-    "description": "Create a function to check if a given number is between two other numbers!",
+    "description": "Count the letters in a large text and return the counts as a list",
     "concepts": [],
-    "name": "Between",
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/autograder.js"
-  },
-  {
-    "description": "Implement the caesar cipher, a famous classical encryption technique used by Julius Caesar",
-    "concepts": [],
-    "name": "Caesar Shift",
+    "name": "Counting Letter Frequency",
     "topics": [
       "cryptography"
     ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/autograder.js"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml",
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/autograder.js"
   },
   {
-    "description": "Crack a message encrypted with the Caesar cipher using brute force.",
+    "description": "Count the letters in a large text and return them as a table (recording counts by letter)",
+    "concepts": [],
+    "name": "Counting Letter Frequency as Dictionary",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
+    "parsons": null,
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/autograder.js"
+  },
+  {
+    "description": "Crack a message encrypted with the Caesar cipher using brute force",
     "concepts": [],
     "name": "Cracking the Caesar Shift with Brute Force",
     "topics": [
@@ -70,7 +92,7 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/autograder.js"
   },
   {
-    "description": "Given a single decrypted letter, crack the Caesar cipher!",
+    "description": "Given a single decrypted letter, crack the Caesar cipher",
     "concepts": [],
     "name": "Cracking the Caesar Shift with a Partial Solution",
     "topics": [
@@ -101,6 +123,16 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/autograder.js"
   },
   {
+    "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
+    "concepts": [
+      "higher-order functions"
+    ],
+    "name": "From Infinite Sequences to Finite Lists",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml",
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/autograder.js"
+  },
+  {
     "description": "Represent a counter over all the counting numbers using higher-order functions",
     "concepts": [
       "higher-order functions"
@@ -117,28 +149,6 @@
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
     "parsons": null,
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/autograder.js"
-  },
-  {
-    "description": "Count the letters in a large text and return the counts as a list",
-    "concepts": [],
-    "name": "Counting Letter Frequency",
-    "topics": [
-      "Cryptography"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/autograder.js"
-  },
-  {
-    "description": "Count the letters in a large text and return them as a table (recording counts by letter).",
-    "concepts": [],
-    "name": "Counting Letter Frequency as Dictionary",
-    "topics": [
-      "Cryptography"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
-    "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/autograder.js"
   },
   {
     "description": "Implement map over an infinite sequence (from 'Intro to Infinite Sequences')",
@@ -171,13 +181,17 @@
     "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/autograder.js"
   },
   {
-    "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
+    "description": "Implement the Vigenere cipher, an extension of the Caesar cipher",
     "concepts": [
-      "higher-order functions"
+      "loops",
+      "lists"
     ],
-    "name": "From Infinite Sequences to Finite Lists",
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/autograder.js"
+    "name": "Vigenere Cipher",
+    "topics": [
+      "cryptography"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/parsons.xml",
+    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/autograder.js"
   }
 ]
