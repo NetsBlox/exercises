@@ -10,6 +10,8 @@ const EDITOR_URL = 'https://editor.netsblox.org';
 const tpl = require('lodash.template');
 const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
 const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
+const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
+const makeAutograder = config => autograderTpl.replace('AUTOGRADER_CONFIG', JSON.stringify(config));
 const XML_Element = require('./lib/snap/xml');
 
 const isHook = !!process.argv.find(opt => opt === '--hook');
@@ -39,6 +41,7 @@ function prepareExercises() {
             const relpath = path.relative(EXERCISES_PATH, name);
             changed += updateFile(name, contents, `Updated ${exercise} (${relpath})`);
         }
+        changed += updateAutograder(exercise);
         return changed;
     }, 0);
 }
@@ -184,6 +187,7 @@ function updateWebsite() {
         const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
         metadata.template = getSourceUrl(dirname, 'template.xml');
         metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
+        metadata.autograder = getSourceUrl(dirname, 'autograder.js');
         return metadata;
     });
 
@@ -193,6 +197,36 @@ function updateWebsite() {
         rebuildWebsite();
     }
     return updated;
+}
+
+function updateAutograder(dirname) {
+    const autograderPath = path.join(EXERCISES_PATH, dirname, 'autograder.js');
+    const config = getAutograderConfig(dirname);
+    const autograder = makeAutograder(config);
+    return updateFile(
+        autograderPath,
+        autograder,
+        `Updated autograder for ${dirname}`
+    );
+}
+
+function getAutograderConfig(dirname) {
+    const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
+    return {
+        name: metadata.name,
+        template: metadata.parsons || metadata.template,
+        tests: getTestsConfig(dirname),
+    };
+}
+
+function getTestsConfig(dirname) {
+    const testsFile = path.join(EXERCISES_PATH, dirname, 'tests.json');
+    console.log('getting tests at', testsFile);
+    if (fs.existsSync(testsFile)) {
+        return require(testsFile);
+    } else {
+        return [];
+    }
 }
 
 function rebuildWebsite() {
