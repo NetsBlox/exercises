@@ -661,9 +661,7 @@
     NetsBloxExtensions.register(CustomBlockAutograder);
 
     // Prompt to load the assignment right away
-    function promptStartAssignment() {
-        const autograder = new CustomBlockAutograder(world.children[0]);
-        autograder.loadAssignment(autograder.assignments[0]);
-    }
+    const autograder = new CustomBlockAutograder(world.children[0]);
+    autograder.loadAssignment(autograder.assignments[0]);
 
 })();
