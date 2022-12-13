@@ -21,9 +21,15 @@ const XML_Element = require('./lib/snap/xml');
 
 const isHook = !!process.argv.find(opt => opt === '--hook');
 
-function sum(a, b) {
-    return a + b;
-}
+let cachedAutograderConfig;
+const getAutograderConfig = cached(function (namedExercises) {
+    const assignments = namedExercises.map(pair => getAssignmentConfig(...pair));
+    return {
+        name: 'NetsBlox Exercises',
+        assignments,
+    };
+});
+
 const updatedCount = [
     prepareExercises(),
     updateLibrary(),
@@ -52,7 +58,8 @@ function prepareExercises() {
 
 function updateAutograders(dirnames, exercises) {
     fs.mkdirSync(AUTOGRADERS_PATH);
-    exercises.forEach((exercise, i) => updateAutograder(dirnames[i], exercise));
+    const namedExercises = zip(dirnames, exercises);
+    dirnames.forEach(name => updateAutograder(name, namedExercises));
 }
 
 function* getStarterTemplates(dirname) {
@@ -218,9 +225,10 @@ function getAutograderPath(dirname) {
     return path.join(AUTOGRADERS_PATH, dirname + '.js');
 }
 
-function updateAutograder(dirname, metadata) {
+function updateAutograder(dirname, namedExercises) {
     const autograderPath = getAutograderPath(dirname);
-    const config = getAutograderConfig();
+    const config = getAutograderConfig(namedExercises);
+    const metadata = namedExercises.find(([name, metadata]) => dirname === name).pop();
     const autograder = makeAutograder(config, metadata.name);
     return updateFile(
         autograderPath,
@@ -229,17 +237,7 @@ function updateAutograder(dirname, metadata) {
     );
 }
 
-function getAutograderConfig() {
-    const exercises = fs.readdirSync(EXERCISES_PATH);
-    const assignments = exercises.map(getAssignmentConfig);
-    return {
-        name: 'NetsBlox Exercises',
-        assignments,
-    };
-}
-
-function getAssignmentConfig(dirname) {
-    const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
+function getAssignmentConfig(dirname, metadata) {
     return {
         name: metadata.name,
         template: metadata.parsons || metadata.template,
@@ -293,4 +291,28 @@ function updateFile(path, newContents, msg) {
         updated = true;
     }
     return updated;
+}
+
+function zip(...lists) {
+    const len = Math.min(...lists.map(l => l.length));
+    return range(len)
+        .map(i => lists.map(l => l[i]));
+}
+
+function range(num) {
+    return [...new Array(num)].map((_, i) => i);
+}
+
+function sum(a, b) {
+    return a + b;
+}
+
+function cached(fn) {
+    let result;
+    return function() {
+        if (!result) {
+            result = fn.call(this, ...arguments);
+        }
+        return result;
+    };
 }
