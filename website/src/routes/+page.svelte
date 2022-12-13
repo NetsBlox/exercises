@@ -109,9 +109,11 @@
 
     function openInNetsBlox(exercise: Exercise) {
         const exerciseUrl = exercise.parsons || exercise.template;
-        const url = exercise.autograder ?
-            `https://editor.netsblox.org?extensions=["${encodeURIComponent(exercise.autograder)}"]` :
-            `https://editor.netsblox.org#open:${exerciseUrl}`;
+        // FIXME: cors issues causing problems with the following code
+        //const url = exercise.autograder ?
+        //`https://editor.netsblox.org?extensions=["${encodeURIComponent(exercise.autograder)}"]` :
+        //`https://editor.netsblox.org#open:${exerciseUrl}`;
+        const url = `https://editor.netsblox.org#open:${exerciseUrl}`;
         openTab(url);
     }
 
