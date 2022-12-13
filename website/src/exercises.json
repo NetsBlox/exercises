@@ -5,7 +5,7 @@
     "name": "Actor's Birthday",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/actor-birthday.js"
   },
   {
     "description": "Check if two words are anagrams",
@@ -13,7 +13,7 @@
     "name": "Anagram",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
     "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/anagram.js"
   },
   {
     "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East",
@@ -21,7 +21,7 @@
     "name": "Atbash Cipher",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/atbash.js"
   },
   {
     "description": "Create a function to check if a given number is between two other numbers",
@@ -29,7 +29,7 @@
     "name": "Between",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/between.js"
   },
   {
     "description": "Implement the Caesar cipher, a famous classical encryption technique used by Julius Caesar",
@@ -40,7 +40,7 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/caesar-shift/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/caesar-shift.js"
   },
   {
     "description": "Given a variable list of input numbers (expandable slot), compute the average",
@@ -48,7 +48,7 @@
     "name": "Compute the Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/average.js"
   },
   {
     "description": "Given a list of numbers, compute the average",
@@ -56,7 +56,7 @@
     "name": "Compute the Average of a List",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/average-list.js"
   },
   {
     "description": "Count the letters in a large text and return the counts as a list",
@@ -67,7 +67,7 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/letter-frequency.js"
   },
   {
     "description": "Count the letters in a large text and return them as a table (recording counts by letter)",
@@ -78,7 +78,7 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
     "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/letter-frequency-dictionary.js"
   },
   {
     "description": "Crack a message encrypted with the Caesar cipher using brute force",
@@ -89,7 +89,7 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-brute-force/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/crack-caesar-brute-force.js"
   },
   {
     "description": "Given a single decrypted letter, crack the Caesar cipher",
@@ -100,7 +100,7 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/crack-caesar-partial-soln/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/crack-caesar-partial-soln.js"
   },
   {
     "description": "Create an iterator over items in a list that restarts when it reaches the end",
@@ -110,7 +110,7 @@
     "name": "Cyclic Iterator",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/cyclic-iterator.js"
   },
   {
     "description": "Implement the FizzBuzz interview question",
@@ -120,7 +120,7 @@
     "name": "FizzBuzz",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/template.xml",
     "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/fizz-buzz.js"
   },
   {
     "description": "Convert infinite sequences back to lists using 'take' and 'collect'",
@@ -130,7 +130,7 @@
     "name": "From Infinite Sequences to Finite Lists",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/take-collect-sequences.js"
   },
   {
     "description": "Represent a counter over all the counting numbers using higher-order functions",
@@ -140,7 +140,7 @@
     "name": "Intro to Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/intro-infinite-sequences.js"
   },
   {
     "description": "Given a year, determine if it is a leap year",
@@ -148,7 +148,7 @@
     "name": "Leap Year",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
     "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/leap-year.js"
   },
   {
     "description": "Implement map over an infinite sequence (from 'Intro to Infinite Sequences')",
@@ -158,7 +158,7 @@
     "name": "Mapping Over Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/map-sequence.js"
   },
   {
     "description": "Return a list of the averages for every N consecutive numbers in a given list",
@@ -168,7 +168,7 @@
     "name": "Moving Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/moving-average.js"
   },
   {
     "description": "Given a list and window size, return a list of all windows of the given size from the list.",
@@ -178,7 +178,7 @@
     "name": "Sliding Windows",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
     "parsons": null,
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/sliding-windows.js"
   },
   {
     "description": "Implement the Vigenere cipher, an extension of the Caesar cipher",
@@ -192,6 +192,6 @@
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/parsons.xml",
-    "autograder": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/vigenere/autograder.js"
+    "autograder": "https://netsblox.github.io/exercises/autograders/vigenere.js"
   }
 ]

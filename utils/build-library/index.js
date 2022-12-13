@@ -5,13 +5,16 @@ const toml = require('toml');
 const fs = require('fs');
 const ROOT_PATH = path.join(__dirname, '..', '..');
 const EXERCISES_PATH = path.join(ROOT_PATH, 'exercises');
+const AUTOGRADERS_PATH = path.join(ROOT_PATH, 'docs', 'autograders');
 const TPL_PATH = path.join(__dirname, 'template.xml.ejs');
 const EDITOR_URL = 'https://editor.netsblox.org';
 const tpl = require('lodash.template');
 const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
 const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
-const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
-const makeAutograder = config => autograderTpl.replace('AUTOGRADER_CONFIG', JSON.stringify(config));
+const makeAutograder = (() => {
+    const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
+    return config => autograderTpl.replace('AUTOGRADER_CONFIG', JSON.stringify(config));
+})();
 const XML_Element = require('./lib/snap/xml');
 
 const isHook = !!process.argv.find(opt => opt === '--hook');
@@ -24,6 +27,7 @@ const updatedCount = [
     updateLibrary(),
     updateReadme(),
     updateWebsite(),
+    updateAutograders(),
 ].reduce(sum, 0);
 
 if (isHook && updatedCount > 0) {
@@ -41,9 +45,14 @@ function prepareExercises() {
             const relpath = path.relative(EXERCISES_PATH, name);
             changed += updateFile(name, contents, `Updated ${exercise} (${relpath})`);
         }
-        changed += updateAutograder(exercise);
         return changed;
     }, 0);
+}
+
+function updateAutograders() {
+    const exerciseDirs = fs.readdirSync(EXERCISES_PATH);
+    fs.mkdirSync(AUTOGRADERS_PATH);
+    exerciseDirs.forEach(updateAutograder);
 }
 
 function* getStarterTemplates(dirname) {
@@ -187,7 +196,7 @@ function updateWebsite() {
         const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
         metadata.template = getSourceUrl(dirname, 'template.xml');
         metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
-        metadata.autograder = getSourceUrl(dirname, 'autograder.js');
+        metadata.autograder = getAutograderUrl(dirname);
         return metadata;
     }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
 
@@ -199,14 +208,23 @@ function updateWebsite() {
     return updated;
 }
 
+function getAutograderUrl(dirname) {
+    const relPath = path.relative(path.join(ROOT_PATH, 'docs/'), getAutograderPath(dirname));
+    return `https://netsblox.github.io/exercises/${relPath}`;
+}
+
+function getAutograderPath(dirname) {
+    return path.join(AUTOGRADERS_PATH, dirname + '.js');
+}
+
 function updateAutograder(dirname) {
-    const autograderPath = path.join(EXERCISES_PATH, dirname, 'autograder.js');
+    const autograderPath = getAutograderPath(dirname);
     const config = getAutograderConfig(dirname);
     const autograder = makeAutograder(config);
     return updateFile(
         autograderPath,
         autograder,
-        `Updated autograder for ${dirname}`
+        `Updated autograder for ${dirname} (${autograderPath})`
     );
 }
 
