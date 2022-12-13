@@ -663,7 +663,6 @@
     // Prompt to load the assignment right away
     function checkLoaded() {
         if (!NetsBloxExtensions.isLoaded(config.name)) {
-            console.log('not yet loaded!');
             return setTimeout(checkLoaded, 100);
         }
 
