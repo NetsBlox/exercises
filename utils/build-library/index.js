@@ -240,7 +240,7 @@ function updateAutograder(dirname, namedExercises) {
 function getAssignmentConfig(dirname, metadata) {
     return {
         name: metadata.name,
-        template: metadata.parsons || metadata.template,
+        'starter template': metadata.parsons || metadata.template,
         tests: getTestsConfig(dirname),
     };
 }
