@@ -668,7 +668,7 @@
         }
 
         const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
-        const assignmentName = 'Caesar Shift';
+        const assignmentName = 'Compute the Average of a List';
         const assignment = autograder.assignments.find(a => a.name === assignmentName);
         if (assignment) {
             autograder.loadAssignment(assignment);

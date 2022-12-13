@@ -668,7 +668,7 @@
         }
 
         const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
-        const assignmentName = 'Moving Average';
+        const assignmentName = 'Mapping Over Infinite Sequences';
         const assignment = autograder.assignments.find(a => a.name === assignmentName);
         if (assignment) {
             autograder.loadAssignment(assignment);

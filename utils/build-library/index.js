@@ -29,7 +29,6 @@ const updatedCount = [
     updateLibrary(),
     updateReadme(),
     updateWebsite(),
-    updateAutograders(),
 ].reduce(sum, 0);
 
 if (isHook && updatedCount > 0) {
@@ -51,10 +50,9 @@ function prepareExercises() {
     }, 0);
 }
 
-function updateAutograders() {
-    const exerciseDirs = fs.readdirSync(EXERCISES_PATH);
+function updateAutograders(dirnames, exercises) {
     fs.mkdirSync(AUTOGRADERS_PATH);
-    exerciseDirs.forEach(updateAutograder);
+    exercises.forEach((exercise, i) => updateAutograder(dirnames[i], exercise));
 }
 
 function* getStarterTemplates(dirname) {
@@ -207,6 +205,7 @@ function updateWebsite() {
     if (true) {
         rebuildWebsite();
     }
+    updateAutograders(exerciseNames, exercises);
     return updated;
 }
 
@@ -219,10 +218,9 @@ function getAutograderPath(dirname) {
     return path.join(AUTOGRADERS_PATH, dirname + '.js');
 }
 
-function updateAutograder(dirname) {
+function updateAutograder(dirname, metadata) {
     const autograderPath = getAutograderPath(dirname);
     const config = getAutograderConfig();
-    const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
     const autograder = makeAutograder(config, metadata.name);
     return updateFile(
         autograderPath,
