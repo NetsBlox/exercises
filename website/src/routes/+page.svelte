@@ -36,10 +36,10 @@
                         </div>
                         <Actions>
                             <ActionButtons>
-                                <Button on:click={downloadExercise(exercise)} color='secondary'>
+                                <Button on:click={() => downloadExercise(exercise)} color='secondary'>
                                     <Label>Download</Label>
                                 </Button>
-                                <Button on:click={openInNetsBlox(exercise)} color='secondary'>
+                                <Button on:click={() => openInNetsBlox(exercise)} color='secondary'>
                                     <Label>Open in NetsBlox</Label>
                                 </Button>
                             </ActionButtons>
@@ -52,17 +52,14 @@
 
 <script lang="ts">
     import { page } from '$app/stores';
-    import { browser } from "$app/environment";
     import { goto } from '$app/navigation';
     import Button, {Label} from '@smui/button';
     import LayoutGrid, {Cell} from '@smui/layout-grid';
-    import Card, {Content, Actions, ActionButtons} from '@smui/card';
+    import Card, {Actions, ActionButtons} from '@smui/card';
     import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
     import TextField from '@smui/textfield';
     import Icon from '@smui/textfield/icon';
-    import IconButton from '@smui/icon-button';
     import Chip, {Set, Text as ChipText} from '@smui/chips';
-    import Paper, { Title as PaperTitle, Content as PaperContent } from '@smui/paper';
     import {onMount} from 'svelte';
 
     import allExercises from '../exercises.json';
@@ -82,6 +79,9 @@
         description: string;
         concepts: string[];
         topics: string[];
+        parsons: string | null;
+        template: string;
+        autograder: string;
     }
 
     function range(num: number): number[] {
@@ -91,19 +91,6 @@
     function sample<T>(options: T[]): T {
         const index = Math.floor(Math.random()*options.length);
         return options[index];
-    }
-
-    function choose<T>(options: T[], count: number): T[] {
-        return range(count).map(_ => sample(options));
-    }
-
-    function uniq<T>(list: T[]): T[] {
-        return list.reduce((newList: T[], item: T) => {
-            if (!newList.includes(item)) {
-                newList.push(item);
-            }
-            return newList;
-        }, []);
     }
 
     function openTab(url: string) {
@@ -123,7 +110,7 @@
     function openInNetsBlox(exercise: Exercise) {
         const exerciseUrl = exercise.parsons || exercise.template;
         const url = exercise.autograder ?
-            `https://editor.netsblox.org?extensions=[${encodeURIComponent(exercise.autograder)}]`;
+            `https://editor.netsblox.org?extensions=[${encodeURIComponent(exercise.autograder)}]` :
             `https://editor.netsblox.org#open:${exerciseUrl}`;
         openTab(url);
     }

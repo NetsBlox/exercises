@@ -193,7 +193,7 @@ function updateWebsite() {
 
     const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
     const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');
-    if (updated) {
+    if (true) {
         rebuildWebsite();
     }
     return updated;
