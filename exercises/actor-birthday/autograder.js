@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Actor's Birthday","tests":[{"type":"CustomBlockTest","spec":"birthday of %'actor'","inputs":["Keanu Reeves"],"output":"1964-09-02"},{"type":"CustomBlockTest","spec":"birthday of %'actor'","inputs":["Meryl Streep"],"output":"1949-06-22"},{"type":"CustomBlockTest","spec":"birthday of %'actor'","inputs":["Denzel Washington"],"output":"1954-12-28"},{"type":"CustomBlockTest","spec":"birthday of %'actor'","inputs":["Lin-Manuel Miranda"],"output":"1980-01-16"}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

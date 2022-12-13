@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Compute the Average of a List","tests":[{"type":"CustomBlockTest","spec":"average %'list'","inputs":[["1","1"]],"output":"1"},{"type":"CustomBlockTest","spec":"average %'list'","inputs":[["1","2"]],"output":"1.5"},{"type":"CustomBlockTest","spec":"average %'list'","inputs":[["-1","2","4","-3"]],"output":"0.5"},{"type":"CustomBlockTest","spec":"average %'list'","inputs":[["35","-97","12","-19","32"]],"output":-7.4},{"type":"CustomBlockTest","spec":"average %'list'","inputs":[["35","-97","12","-19","32","54"]],"output":2.8333333333333335}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

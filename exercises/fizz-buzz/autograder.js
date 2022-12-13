@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"FizzBuzz","tests":[{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[1],"output":1},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[-39],"output":"fizz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[3],"output":"fizz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[-50],"output":"buzz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[5],"output":"buzz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[-150],"output":"fizzbuzz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[15],"output":"fizzbuzz"},{"type":"CustomBlockTest","spec":"fizz buzz %'number'","inputs":[0],"output":"fizzbuzz"}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

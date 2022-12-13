@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Anagram","tests":[{"type":"CustomBlockTest","spec":"is %'word' an anagram of %'other'","inputs":["shepherd","spider"],"output":false},{"type":"CustomBlockTest","spec":"is %'word' an anagram of %'other'","inputs":["cat","ccat"],"output":false},{"type":"CustomBlockTest","spec":"is %'word' an anagram of %'other'","inputs":["olive","ilove"],"output":true},{"type":"CustomBlockTest","spec":"is %'word' an anagram of %'other'","inputs":["cat","CAT"],"output":true}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

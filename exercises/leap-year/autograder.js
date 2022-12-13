@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Leap Year","tests":[{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2015],"output":false},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1970],"output":false},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1996],"output":true},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1960],"output":true},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2100],"output":false},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[1900],"output":false},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2000],"output":true},{"type":"CustomBlockTest","spec":"is %'year' a leap year?","inputs":[2400],"output":true}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

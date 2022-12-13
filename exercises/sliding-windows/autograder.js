@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Sliding Windows","tests":[]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

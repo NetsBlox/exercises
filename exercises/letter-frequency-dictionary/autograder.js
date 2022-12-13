@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Counting Letter Frequency as Dictionary","tests":[{"type":"CustomBlockTest","spec":"count letters in %'doc'","name":"count letters in %'doc' should count letters in \"abcc\"","inputs":["abcc"],"output":[["a",1],["b",1],["c",2]]},{"type":"CustomBlockTest","spec":"count letters in %'doc'","name":"count letters in %'doc' should skip non-alphabetic characters","inputs":["a4cc"],"output":[["a",1],["c",2]]},{"type":"CustomBlockTest","spec":"count letters in %'doc'","name":"count letters in %'doc' should treat upper and lowercase as the same","inputs":["xyzZ"],"output":[["x",1],["y",1],["z",2]]}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

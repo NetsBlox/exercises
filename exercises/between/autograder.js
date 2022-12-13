@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Between","tests":[{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[2,1,3],"output":true},{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[1,1,3],"output":true},{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[3,1,3],"output":true},{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[2,3,5],"output":false},{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[-6,-5,5],"output":false},{"type":"CustomBlockTest","spec":"is %'number' between %'lower' and %'upper'","inputs":[20,-5,5],"output":false}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */

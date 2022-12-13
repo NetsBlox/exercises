@@ -4,6 +4,7 @@
 (function() {
     const config = {"name":"Caesar Shift","tests":[{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["abc",2],"output":"cde"},{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["DEF",100],"output":"()*"},{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["DEF",-50],"output":"\u0012\u0013\u0014"},{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["with spaces",10],"output":"\u0001s~r*}zkmo}"},{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["no shift!",0],"output":"no shift!"},{"type":"CustomBlockTest","spec":"shift %'text' by %'amount'","inputs":["negative wrapping!",-200],"output":"&\u001d\u001f\u0019,!.\u001dX/*\u0019((!&\u001fY"}]};
     const [ide] = world.children;
+console.log('loaded autograder!', config.name);
 
     class CustomBlockAutograder extends Extension {
         constructor(ide) {  /* TODO: Use an API wrapper instead? */
