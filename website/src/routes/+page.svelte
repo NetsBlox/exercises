@@ -110,7 +110,7 @@
     function openInNetsBlox(exercise: Exercise) {
         const exerciseUrl = exercise.parsons || exercise.template;
         const url = exercise.autograder ?
-            `https://editor.netsblox.org?extensions=[${encodeURIComponent(exercise.autograder)}]` :
+            `https://editor.netsblox.org?extensions=["${encodeURIComponent(exercise.autograder)}"]` :
             `https://editor.netsblox.org#open:${exerciseUrl}`;
         openTab(url);
     }
