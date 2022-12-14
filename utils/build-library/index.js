@@ -57,9 +57,19 @@ function prepareExercises() {
 }
 
 function updateAutograders(dirnames, exercises) {
-    fs.mkdirSync(AUTOGRADERS_PATH);
+    ensureExists(AUTOGRADERS_PATH);
     const namedExercises = zip(dirnames, exercises);
     dirnames.forEach(name => updateAutograder(name, namedExercises));
+}
+
+function ensureExists(dirname) {
+    try {
+        fs.mkdirSync(dirname);
+    } catch (err) {
+        if (err.code != 'EEXIST') {
+            throw err;
+        }
+    }
 }
 
 function* getStarterTemplates(dirname) {
@@ -209,7 +219,7 @@ function updateWebsite() {
 
     const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
     const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');
-    if (true) {
+    if (updated) {
         rebuildWebsite();
     }
     updateAutograders(exerciseNames, exercises);
