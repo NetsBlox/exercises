@@ -192,7 +192,10 @@
                 if (this.resultsDialog) {
                     this.resultsDialog.destroy();
                 }
-            }
+                this.grade(this.currentAssignment);
+                const padding = 20;
+                this.resultsDialog.setBottom(this.ide.bottom() - padding);
+                this.resultsDialog.setRight(this.ide.right() - padding);
         }
 
         async grade(assignment) {
