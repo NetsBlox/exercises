@@ -15,7 +15,7 @@ const makeAutograder = (() => {
     const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
     return (config, name) => autograderTpl
         .replace('AUTOGRADER_CONFIG', JSON.stringify(config))
-        .replace('INITIAL_ASSIGNMENT', name);
+        .replace('INITIAL_ASSIGNMENT', name.replace(/'/g, "\\'"));
 })();
 const XML_Element = require('./lib/snap/xml');
 
