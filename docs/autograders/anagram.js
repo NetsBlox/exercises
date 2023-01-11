@@ -671,7 +671,7 @@
         }
 
         const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
-        const assignmentName = '--';
+        const assignmentName = 'Anagram';
         const assignment = autograder.assignments.find(a => a.name === assignmentName);
         if (assignment) {
             autograder.loadAssignment(assignment);

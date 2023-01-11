@@ -238,7 +238,7 @@ function getAutograderPath(dirname) {
 function updateAutograder(metadata, exercises) {
     const autograderPath = getAutograderPath(metadata.dirname);
     const config = getAutograderConfig(exercises);
-    const autograder = makeAutograder(config, '--', metadata.name);
+    const autograder = makeAutograder(config, metadata.name);
     return updateFile(
         autograderPath,
         autograder,
