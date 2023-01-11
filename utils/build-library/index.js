@@ -22,8 +22,8 @@ const XML_Element = require('./lib/snap/xml');
 const isHook = !!process.argv.find(opt => opt === '--hook');
 
 let cachedAutograderConfig;
-const getAutograderConfig = cached(function (namedExercises) {
-    const assignments = namedExercises.map(pair => getAssignmentConfig(...pair));
+const getAutograderConfig = cached(function (exercises) {
+    const assignments = exercises.map(exercise => getAssignmentConfig(exercise));
     return {
         name: 'NetsBlox Exercises',
         assignments,
@@ -56,10 +56,9 @@ function prepareExercises() {
     }, 0);
 }
 
-function updateAutograders(dirnames, exercises) {
+function updateAutograders(exercises) {
     ensureExists(AUTOGRADERS_PATH);
-    const namedExercises = zip(dirnames, exercises);
-    dirnames.forEach(name => updateAutograder(name, namedExercises));
+    exercises.forEach(exercise => updateAutograder(exercise, exercises));
 }
 
 function ensureExists(dirname) {
@@ -214,6 +213,7 @@ function updateWebsite() {
         metadata.template = getSourceUrl(dirname, 'template.xml');
         metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
         metadata.autograder = getAutograderUrl(dirname);
+        metadata.dirname = dirname;
         return metadata;
     }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
 
@@ -222,7 +222,7 @@ function updateWebsite() {
     if (updated) {
         rebuildWebsite();
     }
-    updateAutograders(exerciseNames, exercises);
+    updateAutograders(exercises);
     return updated;
 }
 
@@ -235,23 +235,22 @@ function getAutograderPath(dirname) {
     return path.join(AUTOGRADERS_PATH, dirname + '.js');
 }
 
-function updateAutograder(dirname, namedExercises) {
-    const autograderPath = getAutograderPath(dirname);
-    const config = getAutograderConfig(namedExercises);
-    const metadata = namedExercises.find(([name, metadata]) => dirname === name).pop();
-    const autograder = makeAutograder(config, metadata.name);
+function updateAutograder(metadata, exercises) {
+    const autograderPath = getAutograderPath(metadata.dirname);
+    const config = getAutograderConfig(exercises);
+    const autograder = makeAutograder(config, '--', metadata.name);
     return updateFile(
         autograderPath,
         autograder,
-        `Updated autograder for ${dirname} (${autograderPath})`
+        `Updated autograder for ${metadata.dirname} (${autograderPath})`
     );
 }
 
-function getAssignmentConfig(dirname, metadata) {
+function getAssignmentConfig(metadata) {
     return {
         name: metadata.name,
         'starter template': metadata.parsons || metadata.template,
-        tests: getTestsConfig(dirname),
+        tests: getTestsConfig(metadata.dirname),
     };
 }
 
