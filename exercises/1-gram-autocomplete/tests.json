@@ -1,0 +1,32 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "build 1-gram model from %'words'",
+    "name": "build 1-gram model from %'words' should return a list",
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_40\" s=\"reportIsA\"><block collabId=\"item_42\" s=\"evaluate\"><block collabId=\"item_43\" var=\"fn\"/><list><block collabId=\"item_30\" s=\"reportNewList\"><list><l>cat</l><l>cab</l></list></block></list></block><l><option>list</option></l></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"17\"><costumes><list struct=\"atomic\" id=\"18\"></list></costumes><sounds><list struct=\"atomic\" id=\"19\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"17\"></ref></origin><context id=\"23\"><inputs></inputs><variables></variables><receiver><ref id=\"17\"></ref></receiver><origin><ref id=\"17\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "build 1-gram model from %'words'",
+
+    "name": "build 1-gram model from %'words' should return a list with 26 rows",
+
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_52\" s=\"reportEquals\"><block collabId=\"item_51\" s=\"reportListAttribute\"><l><option>length</option></l><block collabId=\"item_48_8\" s=\"evaluate\"><block collabId=\"item_48_11\" var=\"fn\"/><list><block collabId=\"item_48_12\" s=\"reportNewList\"><list><l>cat</l><l>cab</l></list></block></list></block></block><l>26</l></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"20\"><costumes><list struct=\"atomic\" id=\"21\"></list></costumes><sounds><list struct=\"atomic\" id=\"22\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"20\"></ref></origin><context id=\"26\"><inputs></inputs><variables></variables><receiver><ref id=\"20\"></ref></receiver><origin><ref id=\"20\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "build 1-gram model from %'words'",
+
+    "name": "build 1-gram model from %'words' should contain rows that sum to 100",
+
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_64\" s=\"reportEquals\"><block collabId=\"item_65\" s=\"reportListAttribute\"><l><option>length</option></l><block collabId=\"item_58\" s=\"reportKeep\"><block collabId=\"item_58_1\" s=\"reifyPredicate\"><autolambda><block collabId=\"item_70\" s=\"reportLessThan\"><block collabId=\"item_77\" s=\"reportMonadic\"><l><option>abs</option></l><block collabId=\"item_75\" s=\"reportDifference\"><l>100</l><block collabId=\"item_69\" s=\"reportVariadicSum\"><block collabId=\"item_82\" var=\"row\"/></block></block></block><l>.5</l></block></autolambda><list><l>row</l></list></block><block collabId=\"item_45_8\" s=\"evaluate\"><block collabId=\"item_45_11\" var=\"fn\"/><list><block collabId=\"item_45_12\" s=\"reportNewList\"><list><l>cat</l><l>cab</l></list></block></list></block></block></block><l>26</l></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"41\"><costumes><list struct=\"atomic\" id=\"42\"></list></costumes><sounds><list struct=\"atomic\" id=\"43\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"41\"></ref></origin><context id=\"47\"><inputs></inputs><variables></variables><receiver><ref id=\"41\"></ref></receiver><origin><ref id=\"41\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "build 1-gram model from %'words'",
+
+    "name": "build 1-gram model from %'words' should return correct probabilities",
+
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_95\" s=\"reportEquals\"><l>50</l><block collabId=\"item_101\" s=\"reportListItem\"><l>1</l><block collabId=\"item_97\" s=\"reportListItem\"><l>3</l><block collabId=\"item_88_8\" s=\"evaluate\"><block collabId=\"item_88_11\" var=\"fn\"/><list><block collabId=\"item_88_12\" s=\"reportNewList\"><list><l>cat</l><l>cab</l><l>che</l><l>chi</l></list></block></list></block></block></block></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"25\"><costumes><list struct=\"atomic\" id=\"26\"></list></costumes><sounds><list struct=\"atomic\" id=\"27\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"25\"></ref></origin><context id=\"31\"><inputs></inputs><variables></variables><receiver><ref id=\"25\"></ref></receiver><origin><ref id=\"25\"></ref></origin></context></context>"
+  }
+]

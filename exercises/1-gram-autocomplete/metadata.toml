@@ -1,0 +1,2 @@
+name = "N-gram Autocomplete (n=1)"
+description = "Implement a 1-gram language model to be used for autocompleting text!"
