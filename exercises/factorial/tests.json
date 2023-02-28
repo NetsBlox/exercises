@@ -1,0 +1,27 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "factorial %'num'",
+    "inputs": [
+      5
+    ],
+    "output": 120
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "factorial %'num'",
+    "inputs": [
+      0
+    ],
+    "output": 1
+  },
+  {
+    "type": "CustomBlockTest",
+    "name": "should compute the factorial of an unknown input",
+    "spec": "factorial %'num'",
+    "inputs": [
+      7
+    ],
+    "output": 5040
+  }
+]

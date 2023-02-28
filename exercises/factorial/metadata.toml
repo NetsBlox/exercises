@@ -1,0 +1,3 @@
+name = "Factorial"
+description = "Take the factorial of any given number"
+concepts = ["recursion"]

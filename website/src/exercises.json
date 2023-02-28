@@ -125,6 +125,17 @@
     "dirname": "cyclic-iterator"
   },
   {
+    "description": "Take the factorial of any given number",
+    "concepts": [
+      "recursion"
+    ],
+    "name": "Factorial",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/factorial/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/factorial/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/factorial.js",
+    "dirname": "factorial"
+  },
+  {
     "description": "Implement the FizzBuzz interview question",
     "concepts": [
       "conditionals"
