@@ -85,7 +85,7 @@
       "cryptography"
     ],
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/template.xml",
-    "parsons": null,
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/letter-frequency-dictionary/parsons.xml",
     "autograder": "https://netsblox.github.io/exercises/autograders/letter-frequency-dictionary.js",
     "dirname": "letter-frequency-dictionary"
   },
