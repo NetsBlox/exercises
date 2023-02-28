@@ -1,2 +1,4 @@
 name = "N-gram Autocomplete (n=1)"
-description = "Implement a 1-gram language model to be used for autocompleting text!"
+description = "Implement a 1-gram language model to be used for text autocompletion"
+topics = ["AI"]
+concepts = ["loops", "lists"]
