@@ -200,19 +200,19 @@
     "dirname": "moving-average"
   },
   {
-    "description": "Implement a 1-gram language model to be used for text autocompletion",
+    "description": "Implement a 2-gram (bigram) language model to be used for text autocompletion",
     "concepts": [
       "loops",
       "lists"
     ],
-    "name": "N-gram Autocomplete (n=1)",
+    "name": "N-gram Autocomplete (n=2)",
     "topics": [
       "AI"
     ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/1-gram-autocomplete/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/1-gram-autocomplete/parsons.xml",
-    "autograder": "https://netsblox.github.io/exercises/autograders/1-gram-autocomplete.js",
-    "dirname": "1-gram-autocomplete"
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/bigram-autocomplete.js",
+    "dirname": "bigram-autocomplete"
   },
   {
     "description": "Given a list and window size, return a list of all windows of the given size from the list.",

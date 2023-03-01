@@ -671,7 +671,7 @@
         }
 
         const autograder = NetsBloxExtensions.registry.find(ext => ext.name === config.name);
-        const assignmentName = 'Mapping Over Infinite Sequences';
+        const assignmentName = 'N-gram Autocomplete (n=2)';
         const assignment = autograder.assignments.find(a => a.name === assignmentName);
         if (assignment) {
             autograder.loadAssignment(assignment);
