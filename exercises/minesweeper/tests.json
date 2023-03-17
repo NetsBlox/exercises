@@ -1,0 +1,166 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "%'board' with mine counts",
+    "inputs": [
+      [
+        [
+          "",
+          "*",
+          ""
+        ],
+        [
+          "*",
+          "",
+          ""
+        ],
+        [
+          "",
+          "*",
+          "*"
+        ]
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "*",
+        1
+      ],
+      [
+        "*",
+        4,
+        3
+      ],
+      [
+        2,
+        "*",
+        "*"
+      ]
+    ],
+    "name": "board w/ mine counts on square board"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "%'board' with mine counts",
+    "inputs": [
+      [
+        [
+          "*",
+          "*"
+        ],
+        [
+          "*",
+          ""
+        ],
+        [
+          "",
+          "*"
+        ]
+      ]
+    ],
+    "output": [
+      [
+        "*",
+        "*"
+      ],
+      [
+        "*",
+        4
+      ],
+      [
+        2,
+        "*"
+      ]
+    ],
+    "name": "board w/ mine counts on rectangle board"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "%'board' with mine counts",
+    "inputs": [
+      [
+        [
+          "*",
+          "*",
+          "*"
+        ],
+        [
+          "*",
+          "",
+          "*"
+        ],
+        [
+          "",
+          "*",
+          ""
+        ]
+      ]
+    ],
+    "output": [
+      [
+        "*",
+        "*",
+        "*"
+      ],
+      [
+        "*",
+        6,
+        "*"
+      ],
+      [
+        2,
+        "*",
+        2
+      ]
+    ],
+    "name": "board w/ mine counts on dense board"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "%'board' with mine counts",
+    "inputs": [
+      [
+        [
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "",
+          "",
+          "",
+          "*"
+        ],
+        [
+          "",
+          "",
+          "",
+          ""
+        ]
+      ]
+    ],
+    "output": [
+      [
+        0,
+        0,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1,
+        "*"
+      ],
+      [
+        0,
+        0,
+        1,
+        1
+      ]
+    ],
+    "name": "board w/ mine counts on sparse board"
+  }
+]

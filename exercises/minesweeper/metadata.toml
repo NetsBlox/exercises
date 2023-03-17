@@ -1,0 +1,3 @@
+name = "Minesweeper"
+description = "Add the numbers to a minesweeper board (knowing the mine locations)"
+concepts = ["loops", "keep", "lists"]

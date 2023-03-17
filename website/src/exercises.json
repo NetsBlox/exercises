@@ -189,6 +189,19 @@
     "dirname": "map-sequence"
   },
   {
+    "description": "Add the numbers to a minesweeper board (knowing the mine locations)",
+    "concepts": [
+      "loops",
+      "keep",
+      "lists"
+    ],
+    "name": "Minesweeper",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/minesweeper/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/minesweeper/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/minesweeper.js",
+    "dirname": "minesweeper"
+  },
+  {
     "description": "Return a list of the averages for every N consecutive numbers in a given list",
     "concepts": [
       "loops"
