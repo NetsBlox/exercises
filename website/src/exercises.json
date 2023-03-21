@@ -182,7 +182,7 @@
     "concepts": [
       "lists"
     ],
-    "name": "Luhn Formula Cipher",
+    "name": "Luhn Formula",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/parsons.xml",
     "autograder": "https://netsblox.github.io/exercises/autograders/luhn-formula.js",
