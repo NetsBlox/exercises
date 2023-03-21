@@ -1,0 +1,3 @@
+name = "Luhn Formula Cipher"
+description = "Implement Luhn formula, a checksum used to check validity of a variety of numbers including credit card numbers and Canadian Social Insurance Numbers"
+concepts = ["lists"]

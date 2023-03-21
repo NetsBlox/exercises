@@ -178,6 +178,17 @@
     "dirname": "leap-year"
   },
   {
+    "description": "Implement Luhn formula, a checksum used to check validity of a variety of numbers including credit card numbers and Canadian Social Insurance Numbers",
+    "concepts": [
+      "lists"
+    ],
+    "name": "Luhn Formula Cipher",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/luhn-formula.js",
+    "dirname": "luhn-formula"
+  },
+  {
     "description": "Implement map over an infinite sequence (from 'Intro to Infinite Sequences')",
     "concepts": [
       "higher-order functions"
