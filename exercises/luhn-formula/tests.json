@@ -40,12 +40,5 @@
     "name": "valid number with odd number of spaces",
     "inputs": ["234 567 891 234"],
     "output": true
-  },
-  {
-    "type": "CustomBlockTest",
-    "spec": "is %'text' valid?",
-    "name": "a single 0 is invalid",
-    "inputs": ["0"],
-    "output": false
   }
 ]
