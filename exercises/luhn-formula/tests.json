@@ -31,7 +31,7 @@
     "type": "CustomBlockTest",
     "spec": "is %'text' valid?",
     "name": "valid number with even digits",
-    "inputs": ["095 245 881"],
+    "inputs": ["095 245 88"],
     "output": true
   },
   {
