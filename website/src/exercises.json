@@ -240,7 +240,10 @@
   },
   {
     "description": "Implement the Sieve of Eratosthenes algorithm for finding prime numbers",
-    "concepts": [],
+    "concepts": [
+      "loops",
+      "lists"
+    ],
     "name": "Sieve of Eratosthenes",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/parsons.xml",
