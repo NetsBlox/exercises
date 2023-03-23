@@ -239,6 +239,15 @@
     "dirname": "bigram-autocomplete"
   },
   {
+    "description": "Implement the Sieve of Eratosthenes algorithm for finding prime numbers",
+    "concepts": [],
+    "name": "Sieve of Eratosthenes",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/sieve.js",
+    "dirname": "sieve"
+  },
+  {
     "description": "Given a list and window size, return a list of all windows of the given size from the list.",
     "concepts": [
       "loops"

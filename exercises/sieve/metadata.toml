@@ -1,0 +1,2 @@
+name = "Sieve of Eratosthenes"
+description = "Implement the Sieve of Eratosthenes algorithm for finding prime numbers"
