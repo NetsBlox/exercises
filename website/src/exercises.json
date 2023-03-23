@@ -239,6 +239,18 @@
     "dirname": "bigram-autocomplete"
   },
   {
+    "description": "Check if a phrase contains all the letters of the alphabet",
+    "concepts": [
+      "loops",
+      "lists"
+    ],
+    "name": "Pangram",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/pangram/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/pangram/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/pangram.js",
+    "dirname": "pangram"
+  },
+  {
     "description": "Implement the Sieve of Eratosthenes algorithm for finding prime numbers",
     "concepts": [
       "loops",

@@ -1,0 +1,3 @@
+name = "Pangram"
+description = "Check if a phrase contains all the letters of the alphabet"
+concepts = ["loops", "lists"]
