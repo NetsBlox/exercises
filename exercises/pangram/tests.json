@@ -1,0 +1,46 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'limit' a pangram?",
+    "inputs": [
+      ""
+    ],
+    "output": false
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'limit' a pangram?",
+    "name": "lowercase pangram",
+    "inputs": [
+      "abcdefghijklmnopqrstuvwxyz"
+    ],
+    "output": true
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'limit' a pangram?",
+    "name": "mixed case pangram",
+    "inputs": [
+      "abcdefghijkLMNOPQRSTUVWXYZ"
+    ],
+    "output": true
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'limit' a pangram?",
+    "name": "pangram with extra symbols",
+    "inputs": [
+      "the quick brown fox jumps over a lazy dog!"
+    ],
+    "output": true
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'limit' a pangram?",
+    "name": "missing a letter",
+    "inputs": [
+      "abcdefghijkLMNOPQRSTUVWYZ"
+    ],
+    "output": false
+  }
+]
