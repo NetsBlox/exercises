@@ -1,14 +1,14 @@
-[ 
-    {
-        "name" : "moving average block should return a list",
-        "type" : "CustomBlockTest",
-        "spec" : "moving average %'data' %'n'",
-        "function" : "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_374\" s=\"reportIsA\"><block collabId=\"item_357_281\" s=\"evaluate\"><block collabId=\"item_383\" var=\"fn\"/><list><block collabId=\"item_384\" s=\"reportNewList\"><list><l>1</l><l>1</l><l>1</l></list></block><l>2</l></list></block><l><option>list</option></l></block><receiver><sprite name=\"moving average\" collabId=\"item_357\" idx=\"3\" x=\"0.3328710124826557\" y=\"-0.24965325936204863\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"19\"><costumes><list struct=\"atomic\" id=\"20\"></list></costumes><sounds><list struct=\"atomic\" id=\"21\"></list></sounds><variables></variables><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"19\"></ref></origin><context id=\"24\"><inputs></inputs><variables></variables><receiver><ref id=\"19\"></ref></receiver><origin><ref id=\"19\"></ref></origin></context></context>"
-    }, 
-    {
-        "name" : "moving average should be computed correctly",
-        "type" : "CustomBlockTest",
-        "spec" : "moving average %'data' %'n'",
-        "function" : "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_464\" s=\"reportEquals\"><block collabId=\"item_468\" s=\"evaluate\"><block collabId=\"item_468_1\" var=\"fn\"/><list><block collabId=\"item_357_234\" s=\"reportNewList\"><list><l>-1</l><l>0</l><l>4</l><l>1</l><l>7</l><l>6</l></list></block><l>3</l></list></block><block collabId=\"item_457\" s=\"reportNewList\"><list><l>1</l><l>1.6666666666666667</l><l>4</l><l>4.666666666666667</l></list></block></block><receiver><sprite name=\"moving average\" collabId=\"item_357\" idx=\"3\" x=\"0.3328710124826557\" y=\"-0.24965325936204863\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"29\"><costumes><list struct=\"atomic\" id=\"30\"></list></costumes><sounds><list struct=\"atomic\" id=\"31\"></list></sounds><variables></variables><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"29\"></ref></origin><context id=\"34\"><inputs></inputs><variables></variables><receiver><ref id=\"29\"></ref></receiver><origin><ref id=\"29\"></ref></origin></context></context>"
-    }
+[
+  {
+    "name": "moving average block should return a list",
+    "type": "CustomBlockTest",
+    "spec": "moving average %'data' %'n'",
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_374\" s=\"reportIsA\"><block collabId=\"item_357_281\" s=\"evaluate\"><block collabId=\"item_383\" var=\"fn\"/><list><block collabId=\"item_384\" s=\"reportNewList\"><list><l>1</l><l>1</l><l>1</l></list></block><l>2</l></list></block><l><option>list</option></l></block><receiver><sprite name=\"moving average\" collabId=\"item_357\" idx=\"3\" x=\"0.3328710124826557\" y=\"-0.24965325936204863\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"19\"><costumes><list struct=\"atomic\" id=\"20\"></list></costumes><sounds><list struct=\"atomic\" id=\"21\"></list></sounds><variables></variables><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"19\"></ref></origin><context id=\"24\"><inputs></inputs><variables></variables><receiver><ref id=\"19\"></ref></receiver><origin><ref id=\"19\"></ref></origin></context></context>"
+  },
+  {
+    "name": "moving average should be computed correctly",
+    "type": "CustomBlockTest",
+    "spec": "moving average %'data' %'n'",
+    "function": "<context id=\"1\"><inputs><input>fn</input></inputs><variables></variables><block collabId=\"item_464\" s=\"reportEquals\"><block collabId=\"item_468\" s=\"evaluate\"><block collabId=\"item_468_1\" var=\"fn\"/><list><block collabId=\"item_357_234\" s=\"reportNewList\"><list><l>-1</l><l>0</l><l>4</l><l>1</l><l>7</l><l>6</l></list></block><l>3</l></list></block><block collabId=\"item_457\" s=\"reportNewList\"><list><l>1</l><l>1.6666666666666667</l><l>4</l><l>4.666666666666667</l></list></block></block><receiver><sprite name=\"moving average\" collabId=\"item_357\" idx=\"3\" x=\"0.3328710124826557\" y=\"-0.24965325936204863\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"29\"><costumes><list struct=\"atomic\" id=\"30\"></list></costumes><sounds><list struct=\"atomic\" id=\"31\"></list></sounds><variables></variables><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"29\"></ref></origin><context id=\"34\"><inputs></inputs><variables></variables><receiver><ref id=\"29\"></ref></receiver><origin><ref id=\"29\"></ref></origin></context></context>"
+  }
 ]

@@ -1,327 +1,361 @@
-const {execSync} = require('child_process');
-const path = require('path');
-const assert = require('assert');
-const toml = require('toml');
-const fs = require('fs');
-const ROOT_PATH = path.join(__dirname, '..', '..');
-const EXERCISES_PATH = path.join(ROOT_PATH, 'exercises');
-const AUTOGRADERS_PATH = path.join(ROOT_PATH, 'docs', 'autograders');
-const TPL_PATH = path.join(__dirname, 'template.xml.ejs');
-const EDITOR_URL = 'https://editor.netsblox.org';
-const tpl = require('lodash.template');
-const makeLibrary = tpl(fs.readFileSync(TPL_PATH, 'utf8'));
-const makeReadme = tpl(fs.readFileSync(path.join(__dirname, 'readme.md.ejs'), 'utf8'));
+const { execSync } = require("child_process");
+const path = require("path");
+const assert = require("assert");
+const toml = require("toml");
+const fs = require("fs");
+const ROOT_PATH = path.join(__dirname, "..", "..");
+const EXERCISES_PATH = path.join(ROOT_PATH, "exercises");
+const AUTOGRADERS_PATH = path.join(ROOT_PATH, "docs", "autograders");
+const TPL_PATH = path.join(__dirname, "template.xml.ejs");
+const EDITOR_URL = "https://editor.netsblox.org";
+const tpl = require("lodash.template");
+const makeLibrary = tpl(fs.readFileSync(TPL_PATH, "utf8"));
+const makeReadme = tpl(
+  fs.readFileSync(path.join(__dirname, "readme.md.ejs"), "utf8"),
+);
 const makeAutograder = (() => {
-    const autograderTpl = fs.readFileSync(path.join(__dirname, 'autograder.ejs'), 'utf8').trim();
-    return (config, name) => autograderTpl
-        .replace('AUTOGRADER_CONFIG', JSON.stringify(config))
-        .replace('INITIAL_ASSIGNMENT', name.replace(/'/g, "\\'"));
+  const autograderTpl = fs.readFileSync(
+    path.join(__dirname, "autograder.ejs"),
+    "utf8",
+  ).trim();
+  return (config, name) =>
+    autograderTpl
+      .replace("AUTOGRADER_CONFIG", JSON.stringify(config))
+      .replace("INITIAL_ASSIGNMENT", name.replace(/'/g, "\\'"));
 })();
-const XML_Element = require('./lib/snap/xml');
+const XML_Element = require("./lib/snap/xml");
 
-const isHook = !!process.argv.find(opt => opt === '--hook');
+const isHook = !!process.argv.find((opt) => opt === "--hook");
 
 let cachedAutograderConfig;
 const getAutograderConfig = cached(function (exercises) {
-    const assignments = exercises.map(exercise => getAssignmentConfig(exercise));
-    return {
-        name: 'NetsBlox Exercises',
-        assignments,
-    };
+  const assignments = exercises.map((exercise) =>
+    getAssignmentConfig(exercise)
+  );
+  return {
+    name: "NetsBlox Exercises",
+    assignments,
+  };
 });
 
 const updatedCount = [
-    prepareExercises(),
-    updateLibrary(),
-    updateReadme(),
-    updateWebsite(),
+  prepareExercises(),
+  updateLibrary(),
+  updateReadme(),
+  updateWebsite(),
 ].reduce(sum, 0);
 
 if (isHook && updatedCount > 0) {
-    console.log('Please confirm the changes and recommit.');
-    process.exit(1);
+  console.log("Please confirm the changes and recommit.");
+  process.exit(1);
 }
 
 function prepareExercises() {
-    const exercises = fs.readdirSync(EXERCISES_PATH);
-    // TODO: Clean this next fn up
-    return exercises.reduce((changed, exercise) => {
-        const tpls = getStarterTemplates(exercise);
-        for (const tpl of tpls) {
-            const [name, contents] = tpl;
-            const relpath = path.relative(EXERCISES_PATH, name);
-            changed += updateFile(name, contents, `Updated ${exercise} (${relpath})`);
-        }
-        return changed;
-    }, 0);
+  const exercises = fs.readdirSync(EXERCISES_PATH);
+  // TODO: Clean this next fn up
+  return exercises.reduce((changed, exercise) => {
+    const tpls = getStarterTemplates(exercise);
+    for (const tpl of tpls) {
+      const [name, contents] = tpl;
+      const relpath = path.relative(EXERCISES_PATH, name);
+      changed += updateFile(name, contents, `Updated ${exercise} (${relpath})`);
+    }
+    return changed;
+  }, 0);
 }
 
 function updateAutograders(exercises) {
-    ensureExists(AUTOGRADERS_PATH);
-    exercises.forEach(exercise => updateAutograder(exercise, exercises));
+  ensureExists(AUTOGRADERS_PATH);
+  exercises.forEach((exercise) => updateAutograder(exercise, exercises));
 }
 
 function ensureExists(dirname) {
-    try {
-        fs.mkdirSync(dirname);
-    } catch (err) {
-        if (err.code != 'EEXIST') {
-            throw err;
-        }
+  try {
+    fs.mkdirSync(dirname);
+  } catch (err) {
+    if (err.code != "EEXIST") {
+      throw err;
     }
+  }
 }
 
 function* getStarterTemplates(dirname) {
-    const exerciseDir = path.join(EXERCISES_PATH, dirname);
-    const filenames = fs.readdirSync(exerciseDir);
-    const metadata = getMetadata(exerciseDir);
+  const exerciseDir = path.join(EXERCISES_PATH, dirname);
+  const filenames = fs.readdirSync(exerciseDir);
+  const metadata = getMetadata(exerciseDir);
 
-    const xmlFiles = filenames.filter(name => name.endsWith('.xml'))
-        .map(xmlFile => path.join(EXERCISES_PATH, dirname, xmlFile));
+  const xmlFiles = filenames.filter((name) => name.endsWith(".xml"))
+    .map((xmlFile) => path.join(EXERCISES_PATH, dirname, xmlFile));
 
-    assert(xmlFiles.length, `No templates found for ${dirname}`);
-    for (const filepath of xmlFiles) {
-        const xml = fs.readFileSync(filepath, 'utf8').trim();
-        const updatedXml = setProjectName(scrubHistory(xml), metadata.name);
-        yield [filepath, updatedXml];
-    }
+  assert(xmlFiles.length, `No templates found for ${dirname}`);
+  for (const filepath of xmlFiles) {
+    const xml = fs.readFileSync(filepath, "utf8").trim();
+    const updatedXml = setProjectName(scrubHistory(xml), metadata.name);
+    yield [filepath, updatedXml];
+  }
 
-    const hasBlankTemplateXML = !!xmlFiles.find(filepath => filepath.endsWith('template.xml'));
-    if (!hasBlankTemplateXML) {
-        yield createEmptyTemplate(xmlFiles[0]);
-    }
+  const hasBlankTemplateXML = !!xmlFiles.find((filepath) =>
+    filepath.endsWith("template.xml")
+  );
+  if (!hasBlankTemplateXML) {
+    yield createEmptyTemplate(xmlFiles[0]);
+  }
 }
 
 function getTestedBlocks(dirname) {
-    const testsFile = path.join(dirname, 'tests.json');
-    if (fs.existsSync(testsFile)) {
-        const blockSpecs = require(testsFile)
-            .map(test => test.spec);
+  const testsFile = path.join(dirname, "tests.json");
+  if (fs.existsSync(testsFile)) {
+    const blockSpecs = require(testsFile)
+      .map((test) => test.spec);
 
-        return unique(blockSpecs);
-    } else {
-        return [];
-    }
+    return unique(blockSpecs);
+  } else {
+    return [];
+  }
 }
 
 function unique(list) {
-    return list.reduce((uniq, item) => {
-        if (!uniq.includes(item)) {
-            uniq.push(item);
-        }
-        return uniq;
-    }, []);
+  return list.reduce((uniq, item) => {
+    if (!uniq.includes(item)) {
+      uniq.push(item);
+    }
+    return uniq;
+  }, []);
 }
 
 function createEmptyTemplate(parsonsFile) {
-    const dirname = path.dirname(parsonsFile);
-    const blockSpecs = getTestedBlocks(dirname);
-    const parsonsXml = fs.readFileSync(parsonsFile, 'utf8');
+  const dirname = path.dirname(parsonsFile);
+  const blockSpecs = getTestedBlocks(dirname);
+  const parsonsXml = fs.readFileSync(parsonsFile, "utf8");
 
-    const element = new XML_Element();
-    element.parseString(parsonsXml);
-    assert(element.children.length === 1, 'Multiple roles not yet supported');
+  const element = new XML_Element();
+  element.parseString(parsonsXml);
+  assert(element.children.length === 1, "Multiple roles not yet supported");
 
-    const [role] = element.children;
-    const [project] = role.children;
-    const blocks = project.childNamed('blocks');
-    const testedBlocks = blocks.children.filter(block => blockSpecs.includes(block.attributes.s));
+  const [role] = element.children;
+  const [project] = role.children;
+  const blocks = project.childNamed("blocks");
+  const testedBlocks = blocks.children.filter((block) =>
+    blockSpecs.includes(block.attributes.s)
+  );
 
-    testedBlocks.forEach(blockDef => {
-        const scripts = blockDef.childNamed('scripts');
-        scripts.children = [];
-    });
+  testedBlocks.forEach((blockDef) => {
+    const scripts = blockDef.childNamed("scripts");
+    scripts.children = [];
+  });
 
-    const templateFile = path.join(dirname, 'template.xml');
-    return [
-        templateFile,
-        element.toString().trim(),
-    ];
+  const templateFile = path.join(dirname, "template.xml");
+  return [
+    templateFile,
+    element.toString().trim(),
+  ];
 }
 
 function setProjectName(xml, name) {
-    const cleanName = name.replace(/"/g, '\\"');
-    return xml.replace(/room name="[^"]+"/, `room name="${cleanName}"`);
+  const cleanName = name.replace(/"/g, '\\"');
+  return xml.replace(/room name="[^"]+"/, `room name="${cleanName}"`);
 }
 
 function scrubHistory(xml) {
-    return xml
-        .replace(/<history>.*?<\/history>/g, '<history></history>')
-        .replace(/<replay>.*?<\/replay>/g, '<replay></replay>');
+  return xml
+    .replace(/<history>.*?<\/history>/g, "<history></history>")
+    .replace(/<replay>.*?<\/replay>/g, "<replay></replay>");
 }
 
 function getParsonsName(filepath) {
-    const metadata = getMetadata(path.dirname(filepath));
-    const chunks = path.basename(filepath).split('-');
-    if (chunks.length > 1) {
-        chunks.shift();
-        chunks[chunks.length - 1] = chunks[chunks.length - 1].replace('.xml', '');
-        const suffix = chunks.join(' ');
-        return `${metadata.name} (${suffix})`;
-    }
-    return metadata.name;
+  const metadata = getMetadata(path.dirname(filepath));
+  const chunks = path.basename(filepath).split("-");
+  if (chunks.length > 1) {
+    chunks.shift();
+    chunks[chunks.length - 1] = chunks[chunks.length - 1].replace(".xml", "");
+    const suffix = chunks.join(" ");
+    return `${metadata.name} (${suffix})`;
+  }
+  return metadata.name;
 }
 
 function getMetadata(exerciseDir) {
-    const metadataPath = path.join(exerciseDir, 'metadata.toml');
-    const text = fs.readFileSync(metadataPath, 'utf8').trim();
-    const metadata = toml.parse(text);
-    assert(metadata.name, `Missing "name" field in ${metadataPath}`);
-    const defaults = {
-        description: '',
-        concepts: []
-    };
+  const metadataPath = path.join(exerciseDir, "metadata.toml");
+  const text = fs.readFileSync(metadataPath, "utf8").trim();
+  const metadata = toml.parse(text);
+  assert(metadata.name, `Missing "name" field in ${metadataPath}`);
+  const defaults = {
+    description: "",
+    concepts: [],
+  };
 
-    return Object.assign({}, defaults, metadata);
+  return Object.assign({}, defaults, metadata);
 }
 
 function updateLibrary() {
-    const testedExercises = fs.readdirSync(EXERCISES_PATH)
-        .filter(dirname => fs.existsSync(path.join(EXERCISES_PATH, dirname, 'tests.json')));
-    const exercises = testedExercises
-        .map(dirname => [getMetadata(path.join(EXERCISES_PATH, dirname)).name, dirname]);
-    const parsons = testedExercises
-        .flatMap(dirname => fs.readdirSync(path.join(EXERCISES_PATH, dirname))
-            .map(d => path.join(EXERCISES_PATH, dirname, d))
-            .filter(filepath => filepath.endsWith('.xml') && !filepath.endsWith('template.xml'))
-            .map(filepath => [getParsonsName(filepath), path.relative(EXERCISES_PATH, filepath)])
+  const testedExercises = fs.readdirSync(EXERCISES_PATH)
+    .filter((dirname) =>
+      fs.existsSync(path.join(EXERCISES_PATH, dirname, "tests.json"))
+    );
+  const exercises = testedExercises
+    .map(
+      (dirname) => [
+        getMetadata(path.join(EXERCISES_PATH, dirname)).name,
+        dirname,
+      ],
+    );
+  const parsons = testedExercises
+    .flatMap((dirname) =>
+      fs.readdirSync(path.join(EXERCISES_PATH, dirname))
+        .map((d) => path.join(EXERCISES_PATH, dirname, d))
+        .filter((filepath) =>
+          filepath.endsWith(".xml") && !filepath.endsWith("template.xml")
         )
-    const toolsPath = path.join(EXERCISES_PATH, '..', 'AutograderTools.xml');
-    const toolsXML = makeLibrary({exercises, parsons}).trim();
+        .map(
+          (filepath) => [
+            getParsonsName(filepath),
+            path.relative(EXERCISES_PATH, filepath),
+          ],
+        )
+    );
+  const toolsPath = path.join(EXERCISES_PATH, "..", "AutograderTools.xml");
+  const toolsXML = makeLibrary({ exercises, parsons }).trim();
 
-    return updateFile(toolsPath, toolsXML, 'Updated the autograder tools!');
+  return updateFile(toolsPath, toolsXML, "Updated the autograder tools!");
 }
 
 function updateReadme() {
-    const exerciseNames = fs.readdirSync(EXERCISES_PATH);
-    const exercises = exerciseNames.map(dirname => {
-        const name = getMetadata(path.join(EXERCISES_PATH, dirname)).name;
-        const template = getOpenInEditorLink(dirname, 'template.xml');
-        const parsons = getOpenInEditorLink(dirname, 'parsons.xml');
-        return {name, template, parsons};
-    });
-    const readmePath = path.join(ROOT_PATH, 'README.md');
-    const contents = makeReadme({exercises}).trim();
+  const exerciseNames = fs.readdirSync(EXERCISES_PATH);
+  const exercises = exerciseNames.map((dirname) => {
+    const name = getMetadata(path.join(EXERCISES_PATH, dirname)).name;
+    const template = getOpenInEditorLink(dirname, "template.xml");
+    const parsons = getOpenInEditorLink(dirname, "parsons.xml");
+    return { name, template, parsons };
+  });
+  const readmePath = path.join(ROOT_PATH, "README.md");
+  const contents = makeReadme({ exercises }).trim();
 
-    return updateFile(readmePath, contents, 'Updated README');
+  return updateFile(readmePath, contents, "Updated README");
 }
 
 function updateWebsite() {
-    const exerciseNames = fs.readdirSync(EXERCISES_PATH);
-    const exercises = exerciseNames.map(dirname => {
-        const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
-        metadata.template = getSourceUrl(dirname, 'template.xml');
-        metadata.parsons = getSourceUrl(dirname, 'parsons.xml');
-        metadata.autograder = getAutograderUrl(dirname);
-        metadata.dirname = dirname;
-        return metadata;
-    }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
+  const exerciseNames = fs.readdirSync(EXERCISES_PATH);
+  const exercises = exerciseNames.map((dirname) => {
+    const metadata = getMetadata(path.join(EXERCISES_PATH, dirname));
+    metadata.template = getSourceUrl(dirname, "template.xml");
+    metadata.parsons = getSourceUrl(dirname, "parsons.xml");
+    metadata.autograder = getAutograderUrl(dirname);
+    metadata.dirname = dirname;
+    return metadata;
+  }).sort((e1, e2) => e1.name < e2.name ? -1 : 1);
 
-    const websitePath = path.join(ROOT_PATH, 'website', 'src', 'exercises.json');
-    const updated = updateFile(websitePath, JSON.stringify(exercises, null, 2), 'Updated website');
-    if (updated) {
-        rebuildWebsite();
-    }
-    updateAutograders(exercises);
-    return updated;
+  const websitePath = path.join(ROOT_PATH, "website", "src", "exercises.json");
+  const updated = updateFile(
+    websitePath,
+    JSON.stringify(exercises, null, 2),
+    "Updated website",
+  );
+  if (updated) {
+    rebuildWebsite();
+  }
+  updateAutograders(exercises);
+  return updated;
 }
 
 function getAutograderUrl(dirname) {
-    const relPath = path.relative(path.join(ROOT_PATH, 'docs/'), getAutograderPath(dirname));
-    return `https://netsblox.github.io/exercises/${relPath}`;
+  const relPath = path.relative(
+    path.join(ROOT_PATH, "docs/"),
+    getAutograderPath(dirname),
+  );
+  return `https://netsblox.github.io/exercises/${relPath}`;
 }
 
 function getAutograderPath(dirname) {
-    return path.join(AUTOGRADERS_PATH, dirname + '.js');
+  return path.join(AUTOGRADERS_PATH, dirname + ".js");
 }
 
 function updateAutograder(metadata, exercises) {
-    const autograderPath = getAutograderPath(metadata.dirname);
-    const config = getAutograderConfig(exercises);
-    const autograder = makeAutograder(config, metadata.name);
-    return updateFile(
-        autograderPath,
-        autograder,
-        `Updated autograder for ${metadata.dirname} (${autograderPath})`
-    );
+  const autograderPath = getAutograderPath(metadata.dirname);
+  const config = getAutograderConfig(exercises);
+  const autograder = makeAutograder(config, metadata.name);
+  return updateFile(
+    autograderPath,
+    autograder,
+    `Updated autograder for ${metadata.dirname} (${autograderPath})`,
+  );
 }
 
 function getAssignmentConfig(metadata) {
-    return {
-        name: metadata.name,
-        'starter template': metadata.parsons || metadata.template,
-        tests: getTestsConfig(metadata.dirname),
-    };
+  return {
+    name: metadata.name,
+    "starter template": metadata.parsons || metadata.template,
+    tests: getTestsConfig(metadata.dirname),
+  };
 }
 
 function getTestsConfig(dirname) {
-    const testsFile = path.join(EXERCISES_PATH, dirname, 'tests.json');
-    if (fs.existsSync(testsFile)) {
-        return require(testsFile);
-    } else {
-        return [];
-    }
+  const testsFile = path.join(EXERCISES_PATH, dirname, "tests.json");
+  if (fs.existsSync(testsFile)) {
+    return require(testsFile);
+  } else {
+    return [];
+  }
 }
 
 function rebuildWebsite() {
-    const websitePath = path.join(ROOT_PATH, 'website');
-    const stdout = execSync('npm run build', {cwd: websitePath});
-    console.log(stdout.toString());
+  const websitePath = path.join(ROOT_PATH, "website");
+  const stdout = execSync("npm run build", { cwd: websitePath });
+  console.log(stdout.toString());
 }
 
 function getSourceUrl(dirname, filepath) {
-    const fullpath = path.join(EXERCISES_PATH, dirname, filepath)
+  const fullpath = path.join(EXERCISES_PATH, dirname, filepath);
 
-    if (fs.existsSync(fullpath)) {
-        const relpath = path.relative(ROOT_PATH, fullpath);
-        return `https://raw.githubusercontent.com/NetsBlox/exercises/master/${relpath}`;
-    }
-    return null;
+  if (fs.existsSync(fullpath)) {
+    const relpath = path.relative(ROOT_PATH, fullpath);
+    return `https://raw.githubusercontent.com/NetsBlox/exercises/master/${relpath}`;
+  }
+  return null;
 }
 
 function getOpenInEditorLink(dirname, filepath) {
-    const fullpath = path.join(EXERCISES_PATH, dirname, filepath)
+  const fullpath = path.join(EXERCISES_PATH, dirname, filepath);
 
-    if (fs.existsSync(fullpath)) {
-        const relpath = path.relative(ROOT_PATH, fullpath);
-        const xmlUrl = getSourceUrl(dirname, filepath);
-        const url = `${EDITOR_URL}#open:${xmlUrl}`;
-        return url;
-    }
-    return null;
+  if (fs.existsSync(fullpath)) {
+    const relpath = path.relative(ROOT_PATH, fullpath);
+    const xmlUrl = getSourceUrl(dirname, filepath);
+    const url = `${EDITOR_URL}#open:${xmlUrl}`;
+    return url;
+  }
+  return null;
 }
 
 function updateFile(path, newContents, msg) {
-    const contents = () => fs.readFileSync(path, 'utf8').trim();
-    let updated = false;
-    if (!fs.existsSync(path) || newContents !== contents()) {
-        fs.writeFileSync(path, newContents);
-        console.log(msg);
-        updated = true;
-    }
-    return updated;
+  const contents = () => fs.readFileSync(path, "utf8").trim();
+  let updated = false;
+  if (!fs.existsSync(path) || newContents !== contents()) {
+    fs.writeFileSync(path, newContents);
+    console.log(msg);
+    updated = true;
+  }
+  return updated;
 }
 
 function zip(...lists) {
-    const len = Math.min(...lists.map(l => l.length));
-    return range(len)
-        .map(i => lists.map(l => l[i]));
+  const len = Math.min(...lists.map((l) => l.length));
+  return range(len)
+    .map((i) => lists.map((l) => l[i]));
 }
 
 function range(num) {
-    return [...new Array(num)].map((_, i) => i);
+  return [...new Array(num)].map((_, i) => i);
 }
 
 function sum(a, b) {
-    return a + b;
+  return a + b;
 }
 
 function cached(fn) {
-    let result;
-    return function() {
-        if (!result) {
-            result = fn.call(this, ...arguments);
-        }
-        return result;
-    };
+  let result;
+  return function () {
+    if (!result) {
+      result = fn.call(this, ...arguments);
+    }
+    return result;
+  };
 }
