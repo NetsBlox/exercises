@@ -1,1 +1,26 @@
-﻿[{"type":"CustomBlockTest","spec":"encrypt %'message' with %'keys'","inputs":["how are you?",["1","2","3","4"]],"output":"iqz$bth$zqxC"},{"type":"CustomBlockTest","spec":"encrypt %'message' with %'keys'","inputs":["cba",["1","2","3"]],"output":"ddd"},{"type":"CustomBlockTest","spec":"encrypt %'message' with %'keys'","inputs":["wow, negative keys?",["-2","-5","-3"]],"output":"ujt*\u001bkcb^rdsc\u001bhctp="},{"type":"CustomBlockTest","spec":"encrypt %'message' with %'keys'","inputs":["what large keys!",["100","200","300"]],"output":"[0\rXh\u0018E:\u0013Ih\u0017IA\u001f\u0005"}]
+﻿[
+  {
+    "type": "CustomBlockTest",
+    "spec": "encrypt %'message' with %'keys'",
+    "inputs": ["how are you?", ["1", "2", "3", "4"]],
+    "output": "iqz$bth$zqxC"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "encrypt %'message' with %'keys'",
+    "inputs": ["cba", ["1", "2", "3"]],
+    "output": "ddd"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "encrypt %'message' with %'keys'",
+    "inputs": ["wow, negative keys?", ["-2", "-5", "-3"]],
+    "output": "ujt*\u001bkcb^rdsc\u001bhctp="
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "encrypt %'message' with %'keys'",
+    "inputs": ["what large keys!", ["100", "200", "300"]],
+    "output": "[0\rXh\u0018E:\u0013Ih\u0017IA\u001f\u0005"
+  }
+]
