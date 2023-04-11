@@ -1,2 +1,0 @@
-node utils/build-library/index.js --hook
-exit $?

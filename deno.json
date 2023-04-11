@@ -1,0 +1,10 @@
+{
+  "fmt": {
+    "files": {
+      "exclude": [
+        "docs/",
+        "AutograderTools.xml"
+      ]
+    }
+  }
+}

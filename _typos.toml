@@ -1,0 +1,2 @@
+[files]
+extend-exclude = ["exercises/*/*.xml", "utils/build-library/node_modules/", "docs/"]
