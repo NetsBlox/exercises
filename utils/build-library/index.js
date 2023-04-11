@@ -25,8 +25,6 @@ const makeAutograder = (() => {
 })();
 const XML_Element = require("./lib/snap/xml");
 
-const isHook = !!process.argv.find((opt) => opt === "--hook");
-
 let cachedAutograderConfig;
 const getAutograderConfig = cached(function (exercises) {
   const assignments = exercises.map((exercise) =>
@@ -44,11 +42,6 @@ const updatedCount = [
   updateReadme(),
   updateWebsite(),
 ].reduce(sum, 0);
-
-if (isHook && updatedCount > 0) {
-  console.log("Please confirm the changes and recommit.");
-  process.exit(1);
-}
 
 function prepareExercises() {
   const exercises = fs.readdirSync(EXERCISES_PATH);

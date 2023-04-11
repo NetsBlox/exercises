@@ -118,15 +118,6 @@ create your own lesson/set of assignments! An example can be found below:
 
 ## Contributing
 
-After cloning the repository, configure the githooks with:
-
-```
-git config core.hooksPath .githooks
-```
-
-This will ensure that any automated preparation will happen automatically such
-as updating the autograder tools library.
-
 ### Creating the exercise
 
 Next, create the starter template with NetsBlox. Ideally, it includes the
