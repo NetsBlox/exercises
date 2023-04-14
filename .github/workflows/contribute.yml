@@ -1,0 +1,29 @@
+name: Contribute Exercises
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  make_contrib_pr:
+    runs-on: ubuntu-latest
+
+    if: contains(github.event.issue.labels.*.name, 'contributed exercise')
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - name: Setup Deno
+      uses: denoland/setup-deno@v1
+      with:
+        deno-version: v1.x
+    - name: Push changes
+      if: steps.git-check.outputs.modified == 'true'
+      run: |
+        git config --global user.name 'Contributor Bot'
+        git config --global user.email 'contrib-bot@netsblox.org'
+        git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        git checkout -b contrib-$(echo "${{ github.event.issue.title }}" | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g')
+        echo '${{ github.event.issue.body }}' > exercise.json
+        deno --allow-read --allow-write --allow-net utils/create-exercise-from-issue.ts exercise.json
+        git commit -am "${{ github.event.issue.title }}"
+        git push
