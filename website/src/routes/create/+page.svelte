@@ -1,19 +1,11 @@
 <div style="margin-left: 2em; margin-right: 2em">
+  <h2 style="text-align: center">Submit an Exercise</h2>
   <p style="font-size:1.15em; text-align: center">
-    Create a new exercise from the user's autograder service
-      - [ ] ensure the user is logged in
-      - [x] 2-level dropdown for exercises to select
-      - [ ] submit!
-        - what should happen on submit?
-        - open a PR on github?
-          - this would need a fork or a bot to do it for us...
-          - what would it look like to have a bot do it?
-        - open an issue?
-          - [x] can we set the title and body from the URL?
-            - [x] and a label
-          - then we can have a bot open the PR :)
-
+  The following form is used to contribute an autograded activity to the official NetsBlox exercises making them easier to be used by others!
   </p>
+  <div>
+    <h4>Please select an exercise from your NetsBlox autograders:</h4>
+  </div>
   <Select items={exercises} bind:value={exercise} groupBy={exercise => exercise.autograder}/>
   <div>
     <Textfield label="Description" style="width: 100%" bind:value={description} input$maxlength={80}>
@@ -68,15 +60,12 @@
   let description = '';
   const allConcepts = uniq(allExercises.flatMap(exercise => exercise.concepts));
   const allTopics = uniq(allExercises.flatMap(exercise => exercise.topics || []));
-  console.log(allConcepts);
-  console.log(allTopics);
   let concepts = [];
   let topics = [];
 
   onMount(async () => {
     const opts = {credentials: 'include'};
     let config = await (await fetch(cloudUrl + '/configuration', opts)).json();
-    console.log(config)
     let servicesUrl = config.servicesHosts[0].url;
     username = config.username;
 
@@ -86,7 +75,6 @@
     }
 
     const services = await (await fetch(`${servicesUrl}/routes/autograders/${username}`)).json();
-    console.log({services})
     const autograders = await Promise.all(
       services.map(service => fetchJson(`${servicesUrl}/routes/autograders/${username}/${service}/config.json`))
     );
@@ -100,9 +88,6 @@
         index: i,
       }))
     );
-    console.log({exercises})
-    $: exercise && console.log('selected', exercise);
-    // TODO: when a service is selected, populate the exercises?
   });
 
   async function fetchJson(url): Promise<any> {
