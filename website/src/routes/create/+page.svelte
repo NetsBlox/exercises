@@ -1,12 +1,17 @@
 <div style="margin-left: 2em; margin-right: 2em">
   <h2 style="text-align: center">Submit an Exercise</h2>
   <p style="font-size:1.15em; text-align: center">
-  The following form is used to contribute an autograded activity to the official NetsBlox exercises making them easier to be used by others!
+  Submit an autograded activity for consideration in the official NetsBlox exercises using the form below!
   </p>
+  {#if !username}
+    <Button on:click={redirectToLogin} variant="unelevated" style="left: 50%;translate: -50%;">
+      <Label>Login to NetsBlox</Label>
+    </Button>
+  {:else}
   <div>
     <h4>Please select an exercise from your NetsBlox autograders:</h4>
   </div>
-  <Select items={exercises} bind:value={exercise} groupBy={exercise => exercise.autograder}/>
+  <Select items={exercises} bind:value={exercise} groupBy={exercise => exercise.autograder} disabled={!username}/>
   <div>
     <Textfield label="Description" style="width: 100%" bind:value={description} input$maxlength={80}>
       <CharacterCounter slot="helper">0 / 80</CharacterCounter>
@@ -33,11 +38,12 @@
     {/each}
   </div>
 
-  <Button on:click={onSubmitClicked} variant="unelevated">
+  <Button on:click={onSubmitClicked} variant="unelevated" disabled={!exercise}  style="left: 50%;translate: -50%;">
     <Label>Submit Exercise</Label>
   </Button>
   <div style="margin: auto; width: 400px">
   </div>
+  {/if}
 </div>
 <script lang="ts">
   import Select from 'svelte-select';
@@ -51,8 +57,8 @@
   import {onMount} from 'svelte';
 
   const cloudUrl = 'https://cloud.netsblox.org';
+  let servicesUrl;
 
-  // TODO: handle errors
   let username;
   let selectedService;
   let exercises = [];
@@ -66,20 +72,29 @@
   onMount(async () => {
     const opts = {credentials: 'include'};
     let config = await (await fetch(cloudUrl + '/configuration', opts)).json();
-    let servicesUrl = config.servicesHosts[0].url;
-    username = config.username;
+    servicesUrl = config.servicesHosts[0].url;
 
-    // TODO: ensure the user is logged in
-    if (!username) {
-      // TODO
+    if (config.username) {
+      username = config.username;
+      exercises = await fetchExercises(username);
     }
+  });
 
+  interface Exercise {
+    label: string;
+    autograder: string;
+    starterUrl: string;
+    tests: any[];
+    index: number;
+  }
+
+  async function fetchExercises(username: string): Exercise[] {
     const services = await (await fetch(`${servicesUrl}/routes/autograders/${username}`)).json();
     const autograders = await Promise.all(
       services.map(service => fetchJson(`${servicesUrl}/routes/autograders/${username}/${service}/config.json`))
     );
 
-    exercises = autograders.flatMap(
+    return autograders.flatMap(
       autograder => autograder.assignments.map((assgn, i) => ({
         label: assgn.name,
         autograder: autograder.name,
@@ -88,7 +103,7 @@
         index: i,
       }))
     );
-  });
+  }
 
   async function fetchJson(url): Promise<any> {
     const opts = {credentials: 'include'};
@@ -96,7 +111,6 @@
   }
 
   function onSubmitClicked() {
-    console.log('submitting', exercise);
     const title = `New Exercise: ${exercise.label}`;
     const body = JSON.stringify({
       name: exercise.label,
@@ -108,6 +122,12 @@
     }, null, 2);
     const url = `https://github.com/netsblox/exercises/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}&labels=contributed+exercise`;
     window.open(url, '_blank');
+  }
+
+  function redirectToLogin() {
+    const here = window.location.href;
+    const url = `https://login.netsblox.org?redirect=${encodeURIComponent(here)}`
+    window.open(url);
   }
 
   function uniq<T>(list: T[]): T[] {
