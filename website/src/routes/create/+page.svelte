@@ -1,8 +1,9 @@
 <div style="margin-left: 2em; margin-right: 2em">
   <h2 style="text-align: center">Submit an Exercise</h2>
   <p style="font-size:1.15em; text-align: center">
-  Submit an autograded activity for consideration in the official NetsBlox exercises using the form below!
+  Interested in contributing an autograded activity to the official NetsBlox exercises? Follow the steps below:
   </p>
+  <br/>
   {#if !username}
     <Button on:click={redirectToLogin} variant="unelevated" style="left: 50%;translate: -50%;">
       <Label>Login to NetsBlox</Label>
@@ -126,7 +127,7 @@
 
   function redirectToLogin() {
     const here = window.location.href;
-    const url = `https://login.netsblox.org?redirect=${encodeURIComponent(here)}`
+    const url = `https://login.dev.netsblox.org?redirect=${encodeURIComponent(here)}`
     window.open(url);
   }
 
