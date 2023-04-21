@@ -4,6 +4,7 @@ const __dirname = path.dirname(__filename);
 const exercisesDir = path.join(__dirname, "..", "exercises");
 
 interface ExerciseDesc {
+  host: string;
   username: string;
   autograder: string;
   name: string;
@@ -23,7 +24,7 @@ interface Assignment {
   tests: any[];
 }
 
-async function getAssignment(desc: ExerciseDesc): Assignment {
+async function getAssignment(desc: ExerciseDesc): Promise<Assignment> {
   const grader: Autograder = await fetchJson(
     `${desc.host}/routes/autograders/${desc.username}/${desc.autograder}/config.json`,
   );
@@ -36,7 +37,7 @@ async function getAssignment(desc: ExerciseDesc): Assignment {
   return assgn;
 }
 
-async function fetchJson(url: string): any {
+async function fetchJson(url: string): Promise<any> {
   const response = await fetch(url);
   return await response.json();
 }
