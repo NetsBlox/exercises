@@ -116,7 +116,7 @@
   }
 
   function onSubmitClicked() {
-    const title = `New Exercise: ${exercise.label} (${username})`;
+    const title = `New Exercise: ${exercise.label}`;
     const body = JSON.stringify({
       host: servicesUrl,
       username,
