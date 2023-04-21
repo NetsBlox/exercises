@@ -1,54 +1,45 @@
-<TopAppBar variant="static" dense={true}>
-    <Row>
-        <Section>
-            <img src="/exercises/full_logo.png" alt="NetsBlox" style="height: 75%">
-                <Title style="color: #9d9d9d; font-family: sans-serif; font-style: italic">Exercises</Title>
-            </Section>
-        </Row>
-    </TopAppBar>
-
-    <div style="margin-left: 2em; margin-right: 2em">
-        <p style="font-size:1.15em; text-align: center">Welcome to the official collection of NetsBlox exercises! 
-            <br/>Learn to program using NetsBlox by exploring the {allExercises.length} exercises that span a variety of topics and concepts. 
-            <br/>For more information about NetsBlox, check out <a href="https://netsblox.org">https://netsblox.org</a>!</p>
-        <div style="margin: auto; width: 400px">
-            <TextField label="Search exercises..." bind:value={searchQuery}>
-                <Icon class="material-icons" slot="leadingIcon">search</Icon>
-            </TextField>
-        </div>
-        <LayoutGrid>
-            {#each exercises as exercise}
-                <Cell>
-                    <Card
-                    >
-                        <div style="padding: 1rem;">
-                            <h2 class="mdc-typography--headline6" style="margin: 0; font-size: 1.3em; display: inline-block;">
-                                {exercise.name}
-                            </h2>
-                            <Set chips={exercise.concepts} let:chip nonInteractive>
-                                <Chip {chip}>
-                                    <ChipText>{chip}</ChipText>
-                                </Chip>
-                            </Set>
-                            <h4 class="mdc-typography--subtitle2" style="margin: 0; color: #888">
-                                {exercise.description}
-                            </h4>
-                        </div>
-                        <Actions>
-                            <ActionButtons>
-                                <Button on:click={() => downloadExercise(exercise)} color='secondary'>
-                                    <Label>Download</Label>
-                                </Button>
-                                <Button on:click={() => openInNetsBlox(exercise)} color='secondary'>
-                                    <Label>Open in NetsBlox</Label>
-                                </Button>
-                            </ActionButtons>
-                        </Actions>
-                    </Card>
-                </Cell>
-            {/each}
-        </LayoutGrid>
+<div style="margin-left: 2em; margin-right: 2em">
+    <p style="font-size:1.15em; text-align: center">Welcome to the official collection of NetsBlox exercises! 
+        <br/>Learn to program using NetsBlox by exploring the {allExercises.length} exercises that span a variety of topics and concepts. 
+        <br/>For more information about NetsBlox, check out <a href="https://netsblox.org">https://netsblox.org</a>!</p>
+    <div style="margin: auto; width: 400px">
+        <TextField label="Search exercises..." bind:value={searchQuery}>
+            <Icon class="material-icons" slot="leadingIcon">search</Icon>
+        </TextField>
     </div>
+    <LayoutGrid>
+        {#each exercises as exercise}
+            <Cell>
+                <Card
+                >
+                    <div style="padding: 1rem;">
+                        <h2 class="mdc-typography--headline6" style="margin: 0; font-size: 1.3em; display: inline-block;">
+                            {exercise.name}
+                        </h2>
+                        <Set chips={exercise.concepts} let:chip nonInteractive>
+                            <Chip {chip}>
+                                <ChipText>{chip}</ChipText>
+                            </Chip>
+                        </Set>
+                        <h4 class="mdc-typography--subtitle2" style="margin: 0; color: #888">
+                            {exercise.description}
+                        </h4>
+                    </div>
+                    <Actions>
+                        <ActionButtons>
+                            <Button on:click={() => downloadExercise(exercise)} color='secondary'>
+                                <Label>Download</Label>
+                            </Button>
+                            <Button on:click={() => openInNetsBlox(exercise)} color='secondary'>
+                                <Label>Open in NetsBlox</Label>
+                            </Button>
+                        </ActionButtons>
+                    </Actions>
+                </Card>
+            </Cell>
+        {/each}
+    </LayoutGrid>
+</div>
 
 <script lang="ts">
     import { page } from '$app/stores';
@@ -56,7 +47,6 @@
     import Button, {Label} from '@smui/button';
     import LayoutGrid, {Cell} from '@smui/layout-grid';
     import Card, {Actions, ActionButtons} from '@smui/card';
-    import TopAppBar, { Row, Section, Title } from '@smui/top-app-bar';
     import TextField from '@smui/textfield';
     import Icon from '@smui/textfield/icon';
     import Chip, {Set, Text as ChipText} from '@smui/chips';
