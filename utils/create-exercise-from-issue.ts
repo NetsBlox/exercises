@@ -4,18 +4,47 @@ const __dirname = path.dirname(__filename);
 const exercisesDir = path.join(__dirname, "..", "exercises");
 
 interface ExerciseDesc {
+  username: string;
+  autograder: string;
   name: string;
   description: string;
   concepts: string[];
   topics: string[];
-  starterUrl: string;
+}
+
+interface Autograder {
+  name: string;
+  assignments: Assignment[];
+}
+
+interface Assignment {
+  name: string;
+  "starter template": string;
   tests: any[];
+}
+
+async function getAssignment(desc: ExerciseDesc): Assignment {
+  const grader: Autograder = await fetchJson(
+    `${desc.host}/routes/autograders/${desc.username}/${desc.autograder}/config.json`,
+  );
+  const assgn = grader.assignments.find((assgn: Assignment) =>
+    assgn.name === desc.name
+  );
+  if (!assgn) {
+    throw new Error(`Assignment ${desc.name} not found in ${desc.autograder}`);
+  }
+  return assgn;
+}
+
+async function fetchJson(url: string): any {
+  const response = await fetch(url);
+  return await response.json();
 }
 
 async function createExercise(filename: string): Promise<void> {
   const desc: ExerciseDesc = JSON.parse(await Deno.readTextFile(filename));
 
-  // TODO: create the directory name
+  // create the directory
   const dirname = desc.name.toLowerCase()
     .replace(/[^a-z]+/g, "-")
     .replace(/-$/, "")
@@ -24,13 +53,21 @@ async function createExercise(filename: string): Promise<void> {
 
   await Deno.mkdir(exerciseDir);
 
+  // Look up the assignment details
+  const assgn = await getAssignment(desc);
+  const starterUrl = assgn["starter template"];
+
   // Fetch the starter project
-  const response = await fetch(desc.starterUrl);
+  const response = await fetch(starterUrl);
   const xml = await response.text();
   const parsonsPath = path.join(exerciseDir, "parsons.xml");
   await Deno.writeTextFile(parsonsPath, xml);
 
   // FIXME: is it a parson's problem?
+
+  // Save the tests
+  const testsPath = path.join(exerciseDir, "tests.json");
+  await Deno.writeTextFile(testsPath, JSON.stringify(assgn.tests, null, 2));
 
   // Save the metadata file
   const metadata = Object.entries({

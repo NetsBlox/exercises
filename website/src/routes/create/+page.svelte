@@ -112,14 +112,15 @@
   }
 
   function onSubmitClicked() {
-    const title = `New Exercise: ${exercise.label}`;
+    const title = `New Exercise: ${exercise.label} (${username})`;
     const body = JSON.stringify({
+      host: servicesUrl,
+      username,
+      autograder: exercise.autograder,
       name: exercise.label,
       description,
       concepts,
       topics,
-      starterUrl: exercise.starterUrl,
-      tests: exercise.tests
     }, null, 2);
     const url = `https://github.com/netsblox/exercises/issues/new?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}&labels=contributed+exercise`;
     window.open(url, '_blank');
