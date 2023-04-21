@@ -17,7 +17,6 @@ jobs:
       with:
         deno-version: v1.x
     - name: Push changes
-      if: steps.git-check.outputs.modified == 'true'
       run: |
         git config --global user.name 'Contributor Bot'
         git config --global user.email 'contrib-bot@netsblox.org'
