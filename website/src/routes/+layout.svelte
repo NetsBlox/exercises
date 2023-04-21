@@ -5,6 +5,7 @@
       <Title style="color: #9d9d9d; font-family: sans-serif; font-style: italic">Exercises</Title>
     </Section>
     <Section align="end" toolbar>
+    <a href="/exercises/" style="text-decoration: none"><IconButton class="material-icons" aria-label="View Exercises" title="View Exercises">search</IconButton></a>
     <a href="/exercises/create" style="text-decoration: none"><IconButton class="material-icons" aria-label="Contribute Exercise" title="Contribute Exercise!">add</IconButton></a>
     </Section>
   </Row>
