@@ -16,7 +16,8 @@ jobs:
       uses: denoland/setup-deno@v1
       with:
         deno-version: v1.x
-    - name: Push changes
+    - name: Add Exercise
+      id: exercise
       run: |
         git config --global user.name 'Contributor Bot'
         git config --global user.email 'contrib-bot@netsblox.org'
@@ -25,6 +26,12 @@ jobs:
         echo '${{ github.event.issue.body }}' > exercise.json
         deno run --allow-read --allow-write --allow-net utils/create-exercise-from-issue.ts exercise.json
         rm exercise.json
-        git add exercises/
-        git commit -am "${{ github.event.issue.title }}"
-        git push origin HEAD
+        echo "BRANCH_NAME=contrib-$(echo "${{ github.event.issue.title }}" | sed 's/New Exercise://' | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g' | sed 's/^-\+//' | sed 's/-\+$//')" >> $GITHUB_OUTPUT
+        echo "BODY=\"Closes #${{ github.event.issue.id }}\"" >> $GITHUB_OUTPUT
+    - name: Push changes
+      uses: peter-evans/create-pull-request@v5
+      with:
+        title: ${{ github.event.issue.title }}
+        body: ${{ steps.exercise.outputs.BODY }}
+        commit-message: ${{ github.event.issue.title }}
+        branch: ${{ steps.exercise.outputs.BRANCH_NAME }}
