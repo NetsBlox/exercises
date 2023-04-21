@@ -21,9 +21,10 @@ jobs:
         git config --global user.name 'Contributor Bot'
         git config --global user.email 'contrib-bot@netsblox.org'
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git checkout -b contrib-$(echo "${{ github.event.issue.title }}" | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g')
+        git checkout -b contrib-$(echo "${{ github.event.issue.title }}" | sed 's/New Exercise://' | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g' | sed 's/^-\+//' | sed 's/-\+$//')
         echo '${{ github.event.issue.body }}' > exercise.json
         deno run --allow-read --allow-write --allow-net utils/create-exercise-from-issue.ts exercise.json
         rm exercise.json
+        git add exercises/
         git commit -am "${{ github.event.issue.title }}"
         git push
