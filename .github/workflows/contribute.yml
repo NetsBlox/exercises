@@ -27,4 +27,4 @@ jobs:
         rm exercise.json
         git add exercises/
         git commit -am "${{ github.event.issue.title }}"
-        git push
+        git push origin HEAD
