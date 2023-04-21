@@ -3,7 +3,11 @@
   <p style="font-size:1.15em; text-align: center">
   Interested in contributing an autograded activity to the official NetsBlox exercises? Follow the steps below:
   </p>
-  <br/>
+  <ol style="font-size:1.15em; text-align: center; list-style-position: inside">
+    <li>Create an autograder using the <a href="https://editor.netsblox.org/docs/services/Autograders/index.html">Autograders service</a>.</li>
+    <li>Submit the form below to fill out an issue on GitHub (login required).</li>
+    <li>Submit the GitHub issue for review!</li>
+  </ol>
   {#if !username}
     <Button on:click={redirectToLogin} variant="unelevated" style="left: 50%;translate: -50%;">
       <Label>Login to NetsBlox</Label>
