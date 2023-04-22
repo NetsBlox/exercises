@@ -27,6 +27,12 @@ jobs:
         rm exercise.json
         echo "BRANCH_NAME=contrib-$(echo "${{ github.event.issue.title }}" | sed 's/New Exercise://' | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g' | sed 's/^-\+//' | sed 's/-\+$//')" >> $GITHUB_OUTPUT
         echo "BODY=Closes #${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: 18.x
+    - run: cd website && npm i
+    - run: node utils/build-library/index.js
     - name: Push changes
       uses: peter-evans/create-pull-request@v5
       with:
