@@ -26,7 +26,7 @@ jobs:
         deno run --allow-read --allow-write --allow-net utils/create-exercise-from-issue.ts exercise.json
         rm exercise.json
         echo "BRANCH_NAME=contrib-$(echo "${{ github.event.issue.title }}" | sed 's/New Exercise://' | sed 's/\(.*\)/\L\1/' | sed 's/[^a-z]\+/-/g' | sed 's/^-\+//' | sed 's/-\+$//')" >> $GITHUB_OUTPUT
-        echo "BODY=\"Closes #${{ github.event.issue.number }}\"" >> $GITHUB_OUTPUT
+        echo "BODY=Closes #${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
     - name: Push changes
       uses: peter-evans/create-pull-request@v5
       with:
