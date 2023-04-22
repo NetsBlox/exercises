@@ -18,6 +18,18 @@
     "dirname": "anagram"
   },
   {
+    "description": "Testing Github Actions",
+    "concepts": [
+      "conditionals"
+    ],
+    "name": "Assignment 1: Between",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/assignment-between/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/assignment-between/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/assignment-between.js",
+    "dirname": "assignment-between"
+  },
+  {
     "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East",
     "concepts": [],
     "name": "Atbash Cipher",
