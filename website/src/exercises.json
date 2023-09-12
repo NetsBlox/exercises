@@ -48,6 +48,21 @@
     "dirname": "between"
   },
   {
+    "description": "Implement a 2-gram (bigram) language model to be used for text autocompletion",
+    "concepts": [
+      "loops",
+      "lists"
+    ],
+    "name": "Bigram Autocomplete",
+    "topics": [
+      "AI"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/bigram-autocomplete.js",
+    "dirname": "bigram-autocomplete"
+  },
+  {
     "description": "Implement the Caesar cipher, a famous classical encryption technique used by Julius Caesar",
     "concepts": [],
     "name": "Caesar Shift",
@@ -258,21 +273,6 @@
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml",
     "autograder": "https://netsblox.github.io/exercises/autograders/moving-average.js",
     "dirname": "moving-average"
-  },
-  {
-    "description": "Implement a 2-gram (bigram) language model to be used for text autocompletion",
-    "concepts": [
-      "loops",
-      "lists"
-    ],
-    "name": "N-gram Autocomplete (n=2)",
-    "topics": [
-      "AI"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/parsons.xml",
-    "autograder": "https://netsblox.github.io/exercises/autograders/bigram-autocomplete.js",
-    "dirname": "bigram-autocomplete"
   },
   {
     "description": "Check if a phrase contains all the letters of the alphabet",
