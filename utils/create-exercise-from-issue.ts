@@ -1,3 +1,4 @@
+import { assert } from "https://deno.land/std@0.201.0/assert/mod.ts";
 import { parse } from "https://deno.land/x/xml/mod.ts";
 import * as path from "https://deno.land/std/path/mod.ts";
 const __filename = path.fromFileUrl(import.meta.url);
@@ -100,7 +101,6 @@ async function createExercise(filename: string): Promise<void> {
 function hasParsonsProblem(xmlString: string, testSpecs: string[]) {
   const xml = parse(xmlString);
   assert(!Array.isArray(xml.room.role), "Multiple roles not yet supported");
-  const defs = testSpecs.map((spec) => getBlockDefinition(xml, spec));
   return testSpecs.map((spec) => isParsonsProblem(xml, spec));
 }
 
