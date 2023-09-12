@@ -158,6 +158,16 @@
     "dirname": "take-collect-sequences"
   },
   {
+    "description": "Can you make a custom block that greets someone?",
+    "concepts": [],
+    "name": "Greet",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/greet/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/greet/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/greet.js",
+    "dirname": "greet"
+  },
+  {
     "description": "Represent a counter over all the counting numbers using higher-order functions",
     "concepts": [
       "higher-order functions"
