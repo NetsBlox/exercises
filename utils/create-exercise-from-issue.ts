@@ -78,8 +78,6 @@ async function createExercise(filename: string): Promise<void> {
   const starterPath = path.join(exerciseDir, starterFilename);
   await Deno.writeTextFile(starterPath, xml);
 
-  // FIXME: is it a parson's problem?
-
   // Save the tests
   const testsPath = path.join(exerciseDir, "tests.json");
   await Deno.writeTextFile(testsPath, JSON.stringify(assgn.tests, null, 2));
@@ -98,10 +96,10 @@ async function createExercise(filename: string): Promise<void> {
   await Deno.writeTextFile(metadataPath, metadata);
 }
 
-function hasParsonsProblem(xmlString: string, testSpecs: string[]) {
+function hasParsonsProblem(xmlString: string, testSpecs: string[]): boolean {
   const xml = parse(xmlString);
   assert(!Array.isArray(xml.room.role), "Multiple roles not yet supported");
-  return testSpecs.map((spec) => isParsonsProblem(xml, spec));
+  return testSpecs.every((spec) => isParsonsProblem(xml, spec));
 }
 
 function isParsonsProblem(xml: any, spec: string): boolean {

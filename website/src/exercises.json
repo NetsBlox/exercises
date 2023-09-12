@@ -191,6 +191,20 @@
     "dirname": "intro-infinite-sequences"
   },
   {
+    "description": "Can you detect first, second, and third order isograms?",
+    "concepts": [
+      "conditionals",
+      "lists",
+      "keep"
+    ],
+    "name": "Isogram",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/isogram/template.xml",
+    "parsons": null,
+    "autograder": "https://netsblox.github.io/exercises/autograders/isogram.js",
+    "dirname": "isogram"
+  },
+  {
     "description": "Given a year, determine if it is a leap year",
     "concepts": [],
     "name": "Leap Year",

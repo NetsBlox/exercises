@@ -1,0 +1,44 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "inputs": [
+      "letter"
+    ],
+    "output": false
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "inputs": [
+      "a"
+    ],
+    "output": true
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "inputs": [
+      "arraigning"
+    ],
+    "output": true
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "name": "is %'word' an isogram? should detect first-order isogram",
+    "function": "<context id=\"1\"><inputs><input>block</input></inputs><variables></variables><block collabId=\"item_1368\" s=\"evaluate\"><block collabId=\"item_1369\" var=\"block\"/><list><l>sunflower</l></list></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"9\"><costumes><list struct=\"atomic\" id=\"10\"></list></costumes><sounds><list struct=\"atomic\" id=\"11\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"9\"></ref></origin><context id=\"15\"><inputs></inputs><variables></variables><receiver><ref id=\"9\"></ref></receiver><origin><ref id=\"9\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "name": "is %'word' an isogram? should detect second-order isogram",
+    "function": "<context id=\"1\"><inputs><input>block</input></inputs><variables></variables><block collabId=\"item_1373_4\" s=\"evaluate\"><block collabId=\"item_1373_8\" var=\"block\"/><list><l>horseshoer</l></list></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"9\"><costumes><list struct=\"atomic\" id=\"10\"></list></costumes><sounds><list struct=\"atomic\" id=\"11\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"9\"></ref></origin><context id=\"15\"><inputs></inputs><variables></variables><receiver><ref id=\"9\"></ref></receiver><origin><ref id=\"9\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "is %'word' an isogram?",
+    "name": "is %'word' an isogram? should detect third-order isogram",
+    "function": "<context id=\"1\"><inputs><input>block</input></inputs><variables></variables><block collabId=\"item_1374_4\" s=\"evaluate\"><block collabId=\"item_1374_8\" var=\"block\"/><list><l>geggee</l></list></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"9\"><costumes><list struct=\"atomic\" id=\"10\"></list></costumes><sounds><list struct=\"atomic\" id=\"11\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"9\"></ref></origin><context id=\"15\"><inputs></inputs><variables></variables><receiver><ref id=\"9\"></ref></receiver><origin><ref id=\"9\"></ref></origin></context></context>"
+  }
+]
