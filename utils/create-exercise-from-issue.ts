@@ -1,3 +1,4 @@
+import { parse } from "https://deno.land/x/xml/mod.ts";
 import * as path from "https://deno.land/std/path/mod.ts";
 const __filename = path.fromFileUrl(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,7 +22,15 @@ interface Autograder {
 interface Assignment {
   name: string;
   "starter template": string;
-  tests: any[];
+  tests: Test[];
+}
+
+type Test = InputOutputTest;
+interface InputOutputTest {
+  type: string;
+  spec: string;
+  inputs: any[];
+  output: any;
 }
 
 async function getAssignment(desc: ExerciseDesc): Promise<Assignment> {
@@ -61,8 +70,12 @@ async function createExercise(filename: string): Promise<void> {
   // Fetch the starter project
   const response = await fetch(starterUrl);
   const xml = await response.text();
-  const parsonsPath = path.join(exerciseDir, "parsons.xml");
-  await Deno.writeTextFile(parsonsPath, xml);
+  const blockSpecs = new Set(assgn.tests.map((test) => test.spec));
+  const starterFilename = hasParsonsProblem(xml, [...blockSpecs])
+    ? "parsons.xml"
+    : "template.xml";
+  const starterPath = path.join(exerciseDir, starterFilename);
+  await Deno.writeTextFile(starterPath, xml);
 
   // FIXME: is it a parson's problem?
 
@@ -82,6 +95,32 @@ async function createExercise(filename: string): Promise<void> {
 
   const metadataPath = path.join(exerciseDir, "metadata.toml");
   await Deno.writeTextFile(metadataPath, metadata);
+}
+
+function hasParsonsProblem(xmlString: string, testSpecs: string[]) {
+  const xml = parse(xmlString);
+  assert(!Array.isArray(xml.room.role), "Multiple roles not yet supported");
+  const defs = testSpecs.map((spec) => getBlockDefinition(xml, spec));
+  return testSpecs.map((spec) => isParsonsProblem(xml, spec));
+}
+
+function isParsonsProblem(xml: any, spec: string): boolean {
+  const defs = getBlockDefinitions(xml, spec);
+  const blockDef = defs.find((def) => def["@s"] === spec);
+  if (!blockDef) {
+    throw new Error(`Block definition not found for tested spec: ${spec}`);
+  }
+  const starterBlocks = blockDef.scripts?.script || blockDef.script?.block ||
+    [];
+  return starterBlocks.length > 0;
+}
+
+function getBlockDefinitions(xml: any, spec: string) {
+  const defs = xml.room.role.project.blocks["block-definition"];
+  if (!Array.isArray(defs)) {
+    return [defs];
+  }
+  return defs;
 }
 
 await Promise.all(Deno.args.map(createExercise));
