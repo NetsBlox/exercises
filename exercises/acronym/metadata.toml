@@ -1,0 +1,4 @@
+name = "Acronym"
+description = "Given a short phrase, can you report the acronym for it?"
+concepts = ["higher-order functions"]
+topics = []

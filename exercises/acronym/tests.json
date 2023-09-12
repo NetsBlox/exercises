@@ -1,0 +1,42 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "acronym for %'phrase'",
+    "inputs": [
+      "I Don't Know"
+    ],
+    "output": "IDK"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "acronym for %'phrase'",
+    "inputs": [
+      "President Of The United States"
+    ],
+    "output": "POTUS"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "acronym for %'phrase'",
+    "inputs": [
+      "Shaking My Head"
+    ],
+    "output": "SMH"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "acronym for %'phrase'",
+    "inputs": [
+      "Agnetha, Bjorn, Benny, Anni-Frid"
+    ],
+    "output": "ABBA"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "acronym for %'phrase'",
+    "inputs": [
+      "Zone Improvement Plan"
+    ],
+    "output": "ZIP"
+  }
+]

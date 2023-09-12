@@ -1,5 +1,17 @@
 [
   {
+    "description": "Given a short phrase, can you report the acronym for it?",
+    "concepts": [
+      "higher-order functions"
+    ],
+    "name": "Acronym",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/acronym.js",
+    "dirname": "acronym"
+  },
+  {
     "description": "Implement a function to get the birthday of an actor using the MovieDB service",
     "concepts": [],
     "name": "Actor's Birthday",
