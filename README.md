@@ -4,6 +4,7 @@ This repository contains a collection of programming exercises in NetsBlox. Each
 ## Getting Started
 ### Standalone (not using the autograding capabilities)
 Feel free to browse the [exercises](./exercises) and open the starter template (ie, the "template.xml" file) of exercises that pique your interest!
+- [Acronym](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/parsons.xml), too!
 - [Actor's Birthday](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml), too!
 - [Anagram](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml).
 - [Atbash Cipher](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml). Available as a [Parsons problem](https://editor.netsblox.org#open:https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml), too!
