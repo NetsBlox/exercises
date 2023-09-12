@@ -1,4 +1,4 @@
-name = "N-gram Autocomplete (n=2)"
+name = "Bigram Autocomplete"
 description = "Implement a 2-gram (bigram) language model to be used for text autocompletion"
 topics = ["AI"]
 concepts = ["loops", "lists"]
