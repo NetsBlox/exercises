@@ -1,0 +1,30 @@
+﻿[
+  {
+    "type": "CustomBlockTest",
+    "spec": "transpose %'note' by %'steps' steps",
+    "inputs": ["54", "1"],
+    "output": "55",
+    "name": "should return G when transposing F# by 1"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "transpose %'note' by %'steps' steps",
+    "inputs": ["54", "1"],
+    "output": "55",
+    "name": "should return A# when transposing C by -2"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "transpose %'note' by %'steps' steps",
+    "inputs": ["54", "1"],
+    "output": "55",
+    "name": "should return F when transposing C by 5"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "transpose %'note' by %'steps' steps",
+    "inputs": ["54", "1"],
+    "output": "55",
+    "name": "should return original note when transposing by 0"
+  }
+]
