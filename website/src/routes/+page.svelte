@@ -99,10 +99,15 @@
 
     function openInNetsBlox(exercise: Exercise) {
         const exerciseUrl = exercise.parsons || exercise.template;
-        const url = exercise.autograder ?
-            `https://editor.netsblox.org?extensions=["${encodeURIComponent(exercise.autograder)}"]` :
-            `https://editor.netsblox.org#open:${exerciseUrl}`;
-            //const url = `https://editor.netsblox.org#open:${exerciseUrl}`;
+        const extensionsQs = exercise.extensions.concat(exercise.autograder)
+            .map(url => `"${encodeURIComponent(url)}"`)
+            .join(',');
+
+        let url = `https://editor.netsblox.org?extensions=[${extensionsQs}]`;
+        if (!exercise.autograder) {
+            url += `#open:${exerciseUrl}`;
+        }
+
         openTab(url);
     }
 
