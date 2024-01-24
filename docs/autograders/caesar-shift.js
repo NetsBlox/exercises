@@ -196,6 +196,7 @@
                 const padding = 20;
                 this.resultsDialog.setBottom(this.ide.bottom() - padding);
                 this.resultsDialog.setRight(this.ide.right() - padding);
+                this.ide.selectSprite(this.ide.stage);
             }
         }
 
