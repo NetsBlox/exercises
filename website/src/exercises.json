@@ -347,7 +347,7 @@
     ],
     "name": "Transposing Music",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/transpose-music/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/transpose-music/parsons.xml",
+    "parsons": null,
     "autograder": "https://netsblox.github.io/exercises/autograders/transpose-music.js",
     "dirname": "transpose-music"
   },
