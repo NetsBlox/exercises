@@ -7,38 +7,34 @@
             <Icon class="material-icons" slot="leadingIcon">search</Icon>
         </TextField>
     </div>
-    <LayoutGrid>
-        {#each exercises as exercise}
-            <Cell>
-                <Card
-                >
-                    <div style="padding: 1rem;">
-                        <h2 class="mdc-typography--headline6" style="margin: 0; font-size: 1.3em; display: inline-block;">
-                            {exercise.name}
-                        </h2>
-                        <Set chips={exercise.concepts} let:chip nonInteractive>
-                            <Chip {chip}>
-                                <ChipText>{chip}</ChipText>
-                            </Chip>
-                        </Set>
-                        <h4 class="mdc-typography--subtitle2" style="margin: 0; color: #888">
-                            {exercise.description}
-                        </h4>
-                    </div>
-                    <Actions>
-                        <ActionButtons>
-                            <Button on:click={() => downloadExercise(exercise)} color='secondary'>
-                                <Label>Download</Label>
-                            </Button>
-                            <Button on:click={() => openInNetsBlox(exercise)} color='secondary'>
-                                <Label>Open in NetsBlox</Label>
-                            </Button>
-                        </ActionButtons>
-                    </Actions>
-                </Card>
-            </Cell>
-        {/each}
-    </LayoutGrid>
+    <List
+      twoLine
+      singleSelection
+    >
+      {#each exercises as exercise}
+        <Item>
+           <Text>
+             <PrimaryText>{exercise.name}</PrimaryText>
+             <SecondaryText>{exercise.description}</SecondaryText>
+           </Text>
+           <Meta>
+             <Set chips={exercise.concepts} let:chip nonInteractive>
+               <Chip {chip}>
+                   <ChipText>{chip}</ChipText>
+               </Chip>
+             </Set>
+             <IconButton
+               title="Download"
+               on:click={() => downloadExercise(exercise)}
+               class="material-icons">download</IconButton>
+             <IconButton
+               title="Open in NetsBlox"
+               on:click={() => openInNetsBlox(exercise)}
+               class="material-icons">open_in_new</IconButton>
+           </Meta>
+        </Item>
+      {/each}
+    </List>
 </div>
 
 <script lang="ts">
@@ -51,6 +47,15 @@
     import Icon from '@smui/textfield/icon';
     import Chip, {Set, Text as ChipText} from '@smui/chips';
     import {onMount} from 'svelte';
+    import IconButton from '@smui/icon-button';
+    import List, {
+      Item,
+      Graphic,
+      Meta,
+      Text,
+      PrimaryText,
+      SecondaryText,
+    } from '@smui/list';
 
     import allExercises from '../exercises.json';
     let searchQuery: string = '';
