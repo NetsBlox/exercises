@@ -1,7 +1,21 @@
 [
   {
+    "description": "Given a short phrase, can you report the acronym for it?",
+    "concepts": [
+      "higher-order functions"
+    ],
+    "extensions": [],
+    "name": "Acronym",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/acronym/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/acronym.js",
+    "dirname": "acronym"
+  },
+  {
     "description": "Implement a function to get the birthday of an actor using the MovieDB service",
     "concepts": [],
+    "extensions": [],
     "name": "Actor's Birthday",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/actor-birthday/parsons.xml",
@@ -11,6 +25,7 @@
   {
     "description": "Check if two words are anagrams",
     "concepts": [],
+    "extensions": [],
     "name": "Anagram",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/anagram/template.xml",
     "parsons": null,
@@ -20,6 +35,7 @@
   {
     "description": "Implement the atbash cipher, an ancient encryption system created in the Middle East",
     "concepts": [],
+    "extensions": [],
     "name": "Atbash Cipher",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/atbash/parsons.xml",
@@ -29,6 +45,7 @@
   {
     "description": "Create a function to check if a given number is between two other numbers",
     "concepts": [],
+    "extensions": [],
     "name": "Between",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/between/parsons.xml",
@@ -36,8 +53,25 @@
     "dirname": "between"
   },
   {
+    "description": "A language model is a probabilistic model of language that can generate a series of words based on example text that it was trained on.\n\nIn this activity, we will be making a custom block to create a simple language model based on bigrams! A bigram-based language model keeps count of how often each letter follows every other letter. Using these counts, it can guess the next letter will be based on the current one!",
+    "concepts": [
+      "loops",
+      "lists"
+    ],
+    "extensions": [],
+    "name": "Bigram Autocomplete",
+    "topics": [
+      "AI"
+    ],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/bigram-autocomplete.js",
+    "dirname": "bigram-autocomplete"
+  },
+  {
     "description": "Implement the Caesar cipher, a famous classical encryption technique used by Julius Caesar",
     "concepts": [],
+    "extensions": [],
     "name": "Caesar Shift",
     "topics": [
       "cryptography"
@@ -50,6 +84,7 @@
   {
     "description": "Given a variable list of input numbers (expandable slot), compute the average",
     "concepts": [],
+    "extensions": [],
     "name": "Compute the Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average/parsons.xml",
@@ -59,6 +94,7 @@
   {
     "description": "Given a list of numbers, compute the average",
     "concepts": [],
+    "extensions": [],
     "name": "Compute the Average of a List",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/average-list/parsons.xml",
@@ -68,6 +104,7 @@
   {
     "description": "Count the letters in a large text and return the counts as a list",
     "concepts": [],
+    "extensions": [],
     "name": "Counting Letter Frequency",
     "topics": [
       "cryptography"
@@ -80,6 +117,7 @@
   {
     "description": "Count the letters in a large text and return them as a table (recording counts by letter)",
     "concepts": [],
+    "extensions": [],
     "name": "Counting Letter Frequency as Dictionary",
     "topics": [
       "cryptography"
@@ -92,6 +130,7 @@
   {
     "description": "Crack a message encrypted with the Caesar cipher using brute force",
     "concepts": [],
+    "extensions": [],
     "name": "Cracking the Caesar Shift with Brute Force",
     "topics": [
       "cryptography"
@@ -104,6 +143,7 @@
   {
     "description": "Given a single decrypted letter, crack the Caesar cipher",
     "concepts": [],
+    "extensions": [],
     "name": "Cracking the Caesar Shift with a Partial Solution",
     "topics": [
       "cryptography"
@@ -118,6 +158,7 @@
     "concepts": [
       "higher-order functions"
     ],
+    "extensions": [],
     "name": "Cyclic Iterator",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/cyclic-iterator/parsons.xml",
@@ -129,6 +170,7 @@
     "concepts": [
       "recursion"
     ],
+    "extensions": [],
     "name": "Factorial",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/factorial/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/factorial/parsons.xml",
@@ -140,6 +182,7 @@
     "concepts": [
       "conditionals"
     ],
+    "extensions": [],
     "name": "FizzBuzz",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/fizz-buzz/template.xml",
     "parsons": null,
@@ -151,6 +194,7 @@
     "concepts": [
       "higher-order functions"
     ],
+    "extensions": [],
     "name": "From Infinite Sequences to Finite Lists",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/take-collect-sequences/parsons.xml",
@@ -158,10 +202,22 @@
     "dirname": "take-collect-sequences"
   },
   {
+    "description": "Can you make a custom block that greets someone?",
+    "concepts": [],
+    "extensions": [],
+    "name": "Greet",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/greet/template.xml",
+    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/greet/parsons.xml",
+    "autograder": "https://netsblox.github.io/exercises/autograders/greet.js",
+    "dirname": "greet"
+  },
+  {
     "description": "Represent a counter over all the counting numbers using higher-order functions",
     "concepts": [
       "higher-order functions"
     ],
+    "extensions": [],
     "name": "Intro to Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/intro-infinite-sequences/parsons.xml",
@@ -169,8 +225,24 @@
     "dirname": "intro-infinite-sequences"
   },
   {
+    "description": "Can you detect first, second, and third order isograms?",
+    "concepts": [
+      "conditionals",
+      "lists",
+      "keep"
+    ],
+    "extensions": [],
+    "name": "Isogram",
+    "topics": [],
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/isogram/template.xml",
+    "parsons": null,
+    "autograder": "https://netsblox.github.io/exercises/autograders/isogram.js",
+    "dirname": "isogram"
+  },
+  {
     "description": "Given a year, determine if it is a leap year",
     "concepts": [],
+    "extensions": [],
     "name": "Leap Year",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/leap-year/template.xml",
     "parsons": null,
@@ -182,6 +254,7 @@
     "concepts": [
       "lists"
     ],
+    "extensions": [],
     "name": "Luhn Formula",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/luhn-formula/parsons.xml",
@@ -193,6 +266,7 @@
     "concepts": [
       "higher-order functions"
     ],
+    "extensions": [],
     "name": "Mapping Over Infinite Sequences",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/map-sequence/parsons.xml",
@@ -206,6 +280,7 @@
       "keep",
       "lists"
     ],
+    "extensions": [],
     "name": "Minesweeper",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/minesweeper/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/minesweeper/parsons.xml",
@@ -217,6 +292,7 @@
     "concepts": [
       "loops"
     ],
+    "extensions": [],
     "name": "Moving Average",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/moving-average/parsons.xml",
@@ -224,26 +300,12 @@
     "dirname": "moving-average"
   },
   {
-    "description": "Implement a 2-gram (bigram) language model to be used for text autocompletion",
-    "concepts": [
-      "loops",
-      "lists"
-    ],
-    "name": "N-gram Autocomplete (n=2)",
-    "topics": [
-      "AI"
-    ],
-    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/template.xml",
-    "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/bigram-autocomplete/parsons.xml",
-    "autograder": "https://netsblox.github.io/exercises/autograders/bigram-autocomplete.js",
-    "dirname": "bigram-autocomplete"
-  },
-  {
     "description": "Check if a phrase contains all the letters of the alphabet",
     "concepts": [
       "loops",
       "lists"
     ],
+    "extensions": [],
     "name": "Pangram",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/pangram/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/pangram/parsons.xml",
@@ -256,6 +318,7 @@
       "loops",
       "lists"
     ],
+    "extensions": [],
     "name": "Sieve of Eratosthenes",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/template.xml",
     "parsons": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sieve/parsons.xml",
@@ -267,6 +330,7 @@
     "concepts": [
       "loops"
     ],
+    "extensions": [],
     "name": "Sliding Windows",
     "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/sliding-windows/template.xml",
     "parsons": null,
@@ -274,11 +338,26 @@
     "dirname": "sliding-windows"
   },
   {
+    "description": "Can you transpose musical notes?",
+    "concepts": [
+      "music"
+    ],
+    "extensions": [
+      "https://extensions.netsblox.org/extensions/BeatBlox/index.js"
+    ],
+    "name": "Transposing Music",
+    "template": "https://raw.githubusercontent.com/NetsBlox/exercises/master/exercises/transpose-music/template.xml",
+    "parsons": null,
+    "autograder": "https://netsblox.github.io/exercises/autograders/transpose-music.js",
+    "dirname": "transpose-music"
+  },
+  {
     "description": "Implement the Vigenere cipher, an extension of the Caesar cipher",
     "concepts": [
       "loops",
       "lists"
     ],
+    "extensions": [],
     "name": "Vigenere Cipher",
     "topics": [
       "cryptography"

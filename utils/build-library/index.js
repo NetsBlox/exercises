@@ -175,6 +175,7 @@ function getMetadata(exerciseDir) {
   const defaults = {
     description: "",
     concepts: [],
+    extensions: [],
   };
 
   return Object.assign({}, defaults, metadata);

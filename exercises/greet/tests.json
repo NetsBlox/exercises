@@ -1,0 +1,32 @@
+[
+  {
+    "type": "CustomBlockTest",
+    "spec": "greet %'person'",
+    "name": "greet %'person' should start with \"Hello,\"",
+    "function": "<context id=\"1\"><inputs><input>block</input></inputs><variables></variables><block collabId=\"item_1257\" s=\"reportEquals\"><block collabId=\"item_1289\" s=\"reportJoinWords\"><block collabId=\"item_1283\" s=\"reportMap\"><block collabId=\"item_1283_1\" s=\"reifyReporter\"><autolambda><block collabId=\"item_1286\" s=\"reportLetter\"><l></l><block collabId=\"item_1259\" s=\"evaluate\"><block collabId=\"item_1260\" var=\"block\"/><list><l>Brian</l></list></block></block></autolambda><list></list></block><block collabId=\"item_1284\" s=\"reportNumbers\"><l>1</l><l>5</l></block></block></block><l>Hello</l></block><receiver><sprite name=\"Sprite\" collabId=\"item_-1\" idx=\"1\" x=\"0\" y=\"0\" heading=\"90\" scale=\"1\" rotation=\"1\" draggable=\"true\" costume=\"0\" color=\"80,80,80\" pen=\"tip\" id=\"29\"><costumes><list struct=\"atomic\" id=\"30\"></list></costumes><sounds><list struct=\"atomic\" id=\"31\"></list></sounds><variables></variables><messageTypes></messageTypes><blocks></blocks><scripts></scripts></sprite></receiver><origin><ref id=\"29\"></ref></origin><context id=\"35\"><inputs></inputs><variables></variables><receiver><ref id=\"29\"></ref></receiver><origin><ref id=\"29\"></ref></origin></context></context>"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "greet %'person'",
+    "inputs": [
+      "Bob"
+    ],
+    "output": "Hello, Bob!"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "greet %'person'",
+    "inputs": [
+      "Alice"
+    ],
+    "output": "Hello, Alice!"
+  },
+  {
+    "type": "CustomBlockTest",
+    "spec": "greet %'person'",
+    "inputs": [
+      "Cliff"
+    ],
+    "output": "Hello, Cliff!"
+  }
+]

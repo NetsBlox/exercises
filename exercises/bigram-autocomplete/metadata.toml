@@ -1,4 +1,4 @@
-name = "N-gram Autocomplete (n=2)"
-description = "Implement a 2-gram (bigram) language model to be used for text autocompletion"
+name = "Bigram Autocomplete"
+description = "A language model is a probabilistic model of language that can generate a series of words based on example text that it was trained on.\n\nIn this activity, we will be making a custom block to create a simple language model based on bigrams! A bigram-based language model keeps count of how often each letter follows every other letter. Using these counts, it can guess the next letter will be based on the current one!"
 topics = ["AI"]
 concepts = ["loops", "lists"]
