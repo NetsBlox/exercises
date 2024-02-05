@@ -196,7 +196,11 @@
                 const padding = 20;
                 this.resultsDialog.setBottom(this.ide.bottom() - padding);
                 this.resultsDialog.setRight(this.ide.right() - padding);
-                this.ide.selectSprite(this.ide.stage);
+
+                // Find the assignment searching the stage, then sprites (in order)
+                const activeSprite = [this.ide.stage, ...this.ide.sprites.asArray()]
+                    .find(sprite => sprite.scripts.children.length > 0);
+                this.ide.selectSprite(activeSprite);
             }
         }
 
